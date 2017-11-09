@@ -1,9 +1,21 @@
+# ZON Default Theme für Liveblogs 3 im Branch `zon_liveblog_default_theme`
+
+- Branch `master` wird manuell mit [https://github.com/liveblog/liveblog-default-theme](https://github.com/liveblog/liveblog-default-theme) up-to-date gehalten
+
+
+- Es empfiehlt sich, `git remote add root git@github.com:liveblog/liveblog-default-theme.git` zu konfigurieren und ab und zu `git pull root master` auszuführen und ggf. in `zon_liveblog_default_theme` zu mergen
+
+- Das ZON-Theme lebt im Branch `zon_liveblog_default_theme` --> `git checkout zon_liveblog_default_theme`
+
+
+
+----
 # Liveblog 3 SEO Theme
 
-User-friendly, indexable and fast Liveblog theme. 
+User-friendly, indexable and fast Liveblog theme.
 
 ## Compatibility
-This theme requires Live Blog version 3.3 or higher. 
+This theme requires Live Blog version 3.3 or higher.
 
 ## Develop
 
@@ -11,8 +23,8 @@ The best starting point for the development of custom theme extensions is our Wi
 
 --
 
-Just issue a `npm i` followed by `gulp watch-static`.    
-Development server is up and running at `localhost:8008`.    
+Just issue a `npm i` followed by `gulp watch-static`.
+Development server is up and running at `localhost:8008`.
 Entry point for Browserify is `js/liveblog.js`.
 
 you can also point to an existing liveblog api entry point by add a `--embedUrl` param.
