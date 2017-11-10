@@ -10,3 +10,4 @@ Thumbs.db
 index.html
 liveblog-default-theme.zip
 py-test/env
+dist/
