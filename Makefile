@@ -7,6 +7,7 @@ make:
 		-x ".git/*" \
 		-x "Makefile" \
 		-x "less/*" \
+		-x "sass/*" \
 		-x "js/*" \
 		-x "node_modules/*" \
 		-x "index.html" \
