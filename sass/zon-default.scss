@@ -29,3 +29,9 @@
 		}
 	}
 }
+
+.lb-item {
+	&.text {
+		font-family: $font-franziska;
+	}
+}
