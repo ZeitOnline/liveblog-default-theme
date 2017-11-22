@@ -1,0 +1,31 @@
+@import "fonts";
+@import "functions";
+@import "utils";
+@import "mixins";
+@import "constants";
+
+.lb-wrapHtml {
+	font-family: $font-tabletgothic;
+	font-size: 1rem;
+	line-height: $base-line-height;
+	margin: 0 auto;
+	max-width: $break-desktop-min;
+
+	* {
+		box-sizing: border-box;
+	}
+}
+
+.lb-sharing {
+	&__list {
+		list-style: none;
+		li {
+			width: em(32px);
+			height: em(32px);
+			display: inline-block;
+			& > * {
+				width: 100%
+			}
+		}
+	}
+}
