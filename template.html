@@ -83,12 +83,12 @@
           <img src="{{ assets_root }}images/lb-logo.svg" />
         </a>
         {% endif %}
-      {% endif %}
+      {% endif -%}
     </div>
   <!-- Header End -->
 
   <!-- Comment -->
-  {% if settings.canComment %}
+  {%- if settings.canComment %}
     {% include "template-comment.html" %}
   {% endif %}
   <!-- Comment End -->
