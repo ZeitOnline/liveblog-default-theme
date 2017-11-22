@@ -160,7 +160,7 @@
   },
   "settings": {
     "showLiveblogLogo": true,
-    "canComment": true,
+    "canComment": false,
     "showAuthorAvatar":true,
     "authorNameFormat":"display_name",
     "showTitle":true,
