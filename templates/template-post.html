@@ -1,5 +1,4 @@
 {% macro translate(text) %}{% if not options.i18n[settings.language] %}{{ text }}{% elif not options.i18n[settings.language][text] %}{{ text }}{% else %}{{ options.i18n[settings.language][text] }}{% endif %}{% endmacro %}
-
 {% set mainItem = item.groups[1].refs[0].item %}
 {% set postDate = item.published_date %}
 {% set type = item.post_items_type %}
@@ -18,11 +17,13 @@
 {% if item.sticky and settings.stickyPosition == 'top' %}
 <article
   class="lb-sticky-top-post list-group-item {{ type }} {% if displaynone %}mod--displaynone{% endif %}"
-  data-js-post-id="{{ item._id }}">
+  data-post-id="{{ item._id }}"
+  data-post-sticky="{{ item.sticky }}">
   {% else %}
 <article
   class="lb-post list-group-item show-author-avatar {{ type }} {% if item.lb_highlight %}lb-post--highlighted{% endif %} {% if displaynone %}mod--displaynone{% endif %}"
-  data-js-post-id="{{ item._id }}">
+  data-post-id="{{ item._id }}"
+  data-post-sticky="{{ item.sticky }}">
   <div class="lb-post-header">
 
     <div class="lb-type lb-type--{{ item.post_items_type }}"></div>
