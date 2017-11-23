@@ -124,11 +124,11 @@
   {% endif %}
   </div>
   <!-- item end -->
-    {# {% if settings.showUpdateDatetime and item.content_updated_date and item.post_items_type != "advertisement" -%}
+    {% if settings.showUpdateDatetime and item.content_updated_date and item.post_items_type != "advertisement" -%}
       <div class="lb-post-updated">
         <span>{{ translate('Updated') }}</span> <span class="lb-post-updated-time relativeDate" data-js-timestamp="{{item.content_updated_date}}">{{item.content_updated_date}}</span>
       </div>
-    {%- endif %}#}
+    {%- endif %}
     <div class="lb-sharing">
       <ul class="lb-sharing__list">
         <li><img src="{{ assets_root }}images/action_share.svg" class="lb-post-shareIcon" /><li>
