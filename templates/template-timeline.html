@@ -109,9 +109,11 @@
         {% endfor %}
       </section>
     {% endif %}
-      <div data-empty-message class="lb-post empty-message {% if api_response.posts._items|length %}mod--displaynone{% endif %}">
+    {% if not api_response.posts._items%}
+      <div data-empty-message class="lb-post empty-message">
         <div>{{ translate("No posts for now") }}</div>
       </div>
+    {% endif %}
       <section data-timeline-normal class="lb-posts list-group normal">
         {% if api_response.posts._items|length > 0 %}
             {% for item in api_response.posts._items %}
