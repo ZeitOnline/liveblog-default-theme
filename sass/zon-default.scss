@@ -30,8 +30,9 @@
 	}
 }
 
-.lb-item {
-	&.text {
+.lb-post {
+	background-color: $grey--light;
+	.text {
 		font-family: $font-franziska;
 	}
 }
