@@ -89,7 +89,7 @@
             "name": "showLiveblogLogo",
             "label": "Show Liveblog logo",
             "type": "checkbox",
-            "default": true,
+            "default": false,
             "help": "Turn off to hide the “powered by Live Blog” logo"
         },
         {
