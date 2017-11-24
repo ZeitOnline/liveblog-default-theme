@@ -28,6 +28,11 @@
 
     <div class="lb-type lb-type--{{ item.post_items_type }}"></div>
     <div class="lb-post-date-icons">
+      <!-- remove advertisement stylization-->
+      {% if item.post_items_type != "advertisement" %}
+
+      <span class="lb-post-date relativeDate" data-js-timestamp="{{ postDate }}">{{ postDate }}</span>
+
       {% if item.sticky and item.lb_highlight %}
         <img src="{{ assets_root }}images/pinpost.svg" class="pin-icon" />
         <img src="{{ assets_root }}images/highlighted.svg" class="highlight-icon" />
@@ -38,11 +43,6 @@
       {% elif item.post_items_type == "advertisement" %}
         <div class="lb-advertisement">{{ translate('Advertisement') }}</div>
       {% endif %}
-
-      <!-- remove advertisement stylization-->
-      {% if item.post_items_type != "advertisement" %}
-
-      <span class="lb-post-date relativeDate" data-js-timestamp="{{ postDate }}">{{ postDate }}</span>
 
     </div>
     <!-- author plus avatar -->
@@ -85,6 +85,7 @@
 
   <!-- item start -->
   <div class="items-container">
+
   {% if type == "comment" %}
     {% include "template-post-comment.html" %}
   {% else %}

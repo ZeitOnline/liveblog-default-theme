@@ -175,7 +175,7 @@
     "showImage":false,
     "authorNameLinksToEmail":false,
     "showAuthor":true,
-    "datetimeFormat":"ago",
+    "datetimeFormat":"lll",
     "infinitScroll":false,
     "stickyPosition": "bottom",
     "gaCode": "UA-XXXXX-Y",

@@ -1,7 +1,8 @@
 $author-avatar-width: em(42px);
 
 .lb-post {
-	padding: em(8px);
+	position: relative;
+	padding: em(8px 8px 8px 60px);
 	background-color: $grey--light;
 	margin-bottom: em(20px);
 	.text {
@@ -9,6 +10,19 @@ $author-avatar-width: em(42px);
 		font-size: em(18px);
 		line-height: 1.4;
 		margin-bottom: em(20px);
+	}
+	&:not(:last-child):not(.sticky) {
+		&:after {
+			content: '';
+			position: absolute;
+			width: 2px;
+			height: 100%;
+			height: calc(100% - 30px);
+			background-color: #ccc;
+			top: em(50px);
+			left: em(30px);
+			z-index: 1;
+		}
 	}
 }
 
@@ -19,6 +33,13 @@ $author-avatar-width: em(42px);
 	margin-bottom: em(20px);
 	position: relative;
 	line-height: $author-avatar-width;
+}
+
+.lb-post-date-icons {
+	margin-left: em(-30px);
+	> * {
+		margin-right: em(6px);
+	}
 }
 
 .lb-author {
