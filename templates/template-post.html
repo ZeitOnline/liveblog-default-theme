@@ -128,26 +128,11 @@
     {%- endif %}
     <div class="lb-sharing">
       <ul class="lb-sharing__list">
-        <li><img src="{{ assets_root }}images/action_share.svg" class="lb-post-shareIcon" /><li>
         <li>
           <a class="lb-post-shareBox__item"
           onclick="window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=570,height=400');return false;"
           data-link-base="//www.facebook.com/sharer.php?s=100&p[title]=&p[url]="
           data-link-id={{item._id}}><img src="{{ assets_root }}images/share_facebook.svg"/>
-          </a>
-        </li>
-        <li>
-          <a class="lb-post-shareBox__item"
-          onclick="window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=570,height=400');return false;"
-          data-link-base="//plus.google.com/share?url="
-          data-link-id={{item._id}}><img src="{{ assets_root }}images/share_google.svg"/>
-          </a>
-        </li>
-        <li>
-          <a class="lb-post-shareBox__item"
-          onclick="window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=570,height=400');return false;"
-          data-link-base="//www.linkedin.com/shareArticle?mini=true&url="
-          data-link-id={{item._id}}><img src="{{ assets_root }}images/share_linkedin.svg"/>
           </a>
         </li>
         <li>

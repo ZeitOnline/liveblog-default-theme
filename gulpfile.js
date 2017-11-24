@@ -129,7 +129,7 @@ const nunjucksOptions = {
 };
 
 const paths = {
-  sass: 'sass/*.scss',
+  sass: 'sass/**/*.scss',
   js: ['js/*.js', 'js/*/*.js'],
   jsfile: 'liveblog.js', // Browserify basedir
   cssfile: path.resolve(inputPath, 'liveblog.css'),
