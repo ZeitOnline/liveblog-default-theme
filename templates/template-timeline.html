@@ -28,7 +28,7 @@
     </div>
   {% endif %}
 
-  {# <!-- Header -->
+  <!-- Header -->
   <div class="header-bar">
     <div class="sorting-bar">
       <div class="sorting-bar__orders">
@@ -84,7 +84,7 @@
         {% endif %}
       {% endif -%}
     </div>
-  <!-- Header End -->#}
+  <!-- Header End -->
 
   <!-- Comment -->
   {%- if settings.canComment %}
@@ -94,12 +94,12 @@
 
   <!-- Timeline -->
   <div class="timeline-body timeline-body--loaded">
-      {# <div data-one-new-update class="lb-post new-updates mod--displaynone">
+      <div data-one-new-update class="lb-post new-updates mod--displaynone">
         <div>{{ translate("See one new update") }}</div>
       </div>
       <div data-new-updates class="lb-post new-updates mod--displaynone">
         <div>{{ translate("See new updates") }}</div>
-      </div>#}
+      </div>
     {% if settings.stickyPosition == 'bottom' %}
       <section data-timeline-sticky class="lb-posts list-group sticky">
         {% for item in api_response.stickyPosts._items %}
@@ -109,11 +109,9 @@
         {% endfor %}
       </section>
     {% endif %}
-    {% if not api_response.posts._items%}
-      <div data-empty-message class="lb-post empty-message">
+      <div data-empty-message class="lb-post empty-message {% if api_response.posts._items|length %}mod--displaynone{% endif %}">
         <div>{{ translate("No posts for now") }}</div>
       </div>
-    {% endif %}
       <section data-timeline-normal class="lb-posts list-group normal">
         {% if api_response.posts._items|length > 0 %}
             {% for item in api_response.posts._items %}

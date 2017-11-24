@@ -69,6 +69,11 @@ $author-avatar-width: em(42px);
 	line-height: $author-avatar-width;
 }
 
+
+.mod--displaynone {
+	display: none
+}
+
 @include respond-min($break-phablet-min) {
 		.lb-post-date-icons {
 			float: left;
