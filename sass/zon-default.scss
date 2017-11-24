@@ -4,6 +4,8 @@
 @import "mixins";
 @import "constants";
 
+$author-avatar-width: em(42px);
+
 .lb-wrapHtml {
 	font-family: $font-tabletgothic;
 	font-size: 1rem;
@@ -31,8 +33,54 @@
 }
 
 .lb-post {
+	padding: em(8px);
 	background-color: $grey--light;
+	margin-bottom: em(20px);
 	.text {
 		font-family: $font-franziska;
+		font-size: em(18px);
+		line-height: 1.4;
 	}
 }
+
+.lb-author {
+	&__name {
+		font-weight: bold;
+	}
+	&__avatar {
+		display: none;
+		border-radius: 50%;
+		overflow: hidden;
+		background: #B9B9B9;
+		background-size: cover;
+		border: 1px solid #f4f4f4;
+		margin-left: 20px;
+		width: $author-avatar-width;
+		height: $author-avatar-width;
+	}
+}
+
+.lb-post-header {
+	@include clearfix();
+	color: $zon_grey;
+	letter-spacing: $zon-letter-spacing-s;
+	margin-bottom: em(20px);
+	position: relative;
+	line-height: $author-avatar-width;
+}
+
+@include respond-min($break-phablet-min) {
+		.lb-post-date-icons {
+			float: left;
+		}
+		.lb-author {
+			float: right;
+			&__name {
+				display: inline-block;
+			}
+			&__avatar {
+				display: inline-block;
+				vertical-align: middle;
+			}
+		}
+	}

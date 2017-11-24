@@ -27,7 +27,6 @@
   <div class="lb-post-header">
 
     <div class="lb-type lb-type--{{ item.post_items_type }}"></div>
-
     <div class="lb-post-date-icons">
       {% if item.sticky and item.lb_highlight %}
         <img src="{{ assets_root }}images/pinpost.svg" class="pin-icon" />
@@ -54,16 +53,16 @@
         </div>
         <img class="lb-author__avatar lb-author__avatar--comment" src="{{ assets_root }}images/comment_icon.svg">
       {% elif settings.showAuthor %}
-        <div class="lb-author__name">
+        <span class="lb-author__name">
         {% if mainItem.syndicated_creator and settings.showSyndicatedAuthor %}
           {{ mainItem.syndicated_creator.display_name }}
-        {% elif mainItem.original_creator %}
+        {% elif mainItem.original_creator -%}
           {{ mainItem.original_creator.display_name }}
-        {% endif %}
+        {%- endif -%}
         {% if item.syndication_in and not settings.showSyndicatedAuthor %}
           <span class="lb-producer{% if settings.showSyndicatedAuthor %} lb-producer__author{% endif %}">{{ item.syndication_in.producer_blog_title }}</span>
         {% endif %}
-        </div>
+      </span>
         {% if type == 'comment' %}
           <img class="lb-author__avatar lb-author__avatar--comment" src="{{ assets_root }}images/comment_icon.svg">
         {% endif %}
@@ -72,8 +71,6 @@
           <img class="lb-author__avatar" src="{{ mainItem.syndicated_creator.picture_url }}" />
           {% elif mainItem.original_creator and mainItem.original_creator.picture_url %}
           <img class="lb-author__avatar" src="{{ mainItem.original_creator.picture_url }}" />
-          {% else %}
-          <div class="lb-author__avatar"></div>
           {% endif %}
         {% endif %}
       {% endif %}
