@@ -165,7 +165,7 @@
     "authorNameFormat":"display_name",
     "showTitle":true,
     "blockSearchEngines":false,
-    "hasHighlights":false,
+    "hasHighlights":true,
     "loadNewPostsManually":true,
     "showGallery":true,
     "postsPerPage":10,
