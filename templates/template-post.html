@@ -27,22 +27,22 @@
   <div class="lb-post-header">
 
     <div class="lb-type lb-type--{{ item.post_items_type }}"></div>
-    <div class="lb-post-date-icons">
+    <div class="lb-post-metadata">
       <!-- remove advertisement stylization-->
       {% if item.post_items_type != "advertisement" %}
 
-      <span class="lb-post-date relativeDate" data-js-timestamp="{{ postDate }}">{{ postDate }}</span>
-
       {% if item.sticky and item.lb_highlight %}
-        <img src="{{ assets_root }}images/pinpost.svg" class="pin-icon" />
-        <img src="{{ assets_root }}images/highlighted.svg" class="highlight-icon" />
+        <span class="lb-post-metadata__status lb-post-metadata__status--pinned"></span>
+        <span class="lb-post-metadata__status lb-post-metadata__status--highlighted"></span>
       {% elif item.sticky %}
-        <img src="{{ assets_root }}images/pinpost.svg" class="pin-icon" />
+        <span class="lb-post-metadata__status lb-post-metadata__status--pinned"></span>
       {% elif item.lb_highlight %}
-        <img src="{{ assets_root }}images/highlighted.svg" class="highlight-icon" />
+        <span class="lb-post-metadata__status lb-post-metadata__status--highlighted"></span>
       {% elif item.post_items_type == "advertisement" %}
         <div class="lb-advertisement">{{ translate('Advertisement') }}</div>
       {% endif %}
+
+      <span class="lb-post-matadata__date relativeDate" data-js-timestamp="{{ postDate }}">{{ postDate }}</span>
 
     </div>
     <!-- author plus avatar -->

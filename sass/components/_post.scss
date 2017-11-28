@@ -35,13 +35,6 @@ $author-avatar-width: em(42px);
 	line-height: $author-avatar-width;
 }
 
-.lb-post-date-icons {
-	margin-left: em(-30px);
-	> * {
-		margin-right: em(6px);
-	}
-}
-
 .lb-author {
 	&__name {
 		font-weight: bold;
@@ -60,7 +53,7 @@ $author-avatar-width: em(42px);
 }
 
 @include respond-min($break-phablet-min) {
-	.lb-post-date-icons {
+	.lb-post-metadata {
 		float: left;
 	}
 	.lb-author {

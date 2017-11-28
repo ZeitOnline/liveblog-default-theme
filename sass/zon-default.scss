@@ -6,6 +6,7 @@
 @import "base/constants";
 @import "components/sorting-bar";
 @import "components/post";
+@import "components/post-metadata";
 @import "components/sharing";
 
 .lb-wrapHtml {
@@ -18,15 +19,6 @@
 	* {
 		box-sizing: border-box;
 	}
-}
-
-.pin-icon {
-	width: 10px;
-}
-
-.highlight-icon {
-	width: 14px;
-	margin-left: 0px;
 }
 
 .mod--displaynone {
