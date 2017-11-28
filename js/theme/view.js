@@ -24,7 +24,7 @@ const els = {
  */
 function renderTimeline(api_response) {
   var renderedPosts = [];
-  // for translation macro purposes 
+  // for translation macro purposes
   var optionsObj = {i18n: window.LB.i18n};
 
   api_response._items.forEach((post) => {
@@ -68,9 +68,9 @@ function renderPosts(api_response) {
     const displaynone = api_response.requestOpts.fromDate &&
                         !window.LB.settings.autoApplyUpdates &&
                         !elem;
-    // for translation macro purposes                    
+    // for translation macro purposes
     var optionsObj = {i18n: window.LB.i18n};
-  
+
     const rendered = templates.post({
       item: post,
       settings: window.LB.settings,
@@ -308,7 +308,7 @@ function attachSlideshow() {
 }
 
 function attachPermalink() {
-  const permalinks = document.querySelectorAll('.lb-post-permalink a');
+  const permalinks = document.querySelectorAll('.lb-post-permalink');
 
   permalinks.forEach((link) => {
     link.href = permalink.getUrl(link.id);

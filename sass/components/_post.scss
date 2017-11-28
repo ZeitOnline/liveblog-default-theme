@@ -59,29 +59,6 @@ $author-avatar-width: em(42px);
 	}
 }
 
-.lb-sharing {
-	display: flex;
-	&__list {
-		padding: 0;
-		list-style: none;
-		margin-left: auto;
-		li {
-			width: em(24px);
-			height: em(24px);
-			display: inline-block;
-			@include hover {
-				opacity: 0.75;
-			};
-			&:not(:last-child) {
-				margin-right: em(5px);
-			}
-			& > * {
-				width: 100%
-			}
-		}
-	}
-}
-
 @include respond-min($break-phablet-min) {
 	.lb-post-date-icons {
 		float: left;
