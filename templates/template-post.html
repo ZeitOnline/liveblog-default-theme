@@ -31,12 +31,12 @@
       <!-- remove advertisement stylization-->
       {% if item.post_items_type != "advertisement" %}
 
-      {% if item.sticky and item.lb_highlight %}
+      {% if item.sticky and item.lb_highlight and settings.hasHighlights %}
         <span class="lb-post-metadata__status lb-post-metadata__status--pinned"></span>
         <span class="lb-post-metadata__status lb-post-metadata__status--highlighted"></span>
       {% elif item.sticky %}
         <span class="lb-post-metadata__status lb-post-metadata__status--pinned"></span>
-      {% elif item.lb_highlight %}
+      {% elif item.lb_highlight and settings.hasHighlights  %}
         <span class="lb-post-metadata__status lb-post-metadata__status--highlighted"></span>
       {% elif item.post_items_type == "advertisement" %}
         <div class="lb-advertisement">{{ translate('Advertisement') }}</div>
