@@ -215,28 +215,9 @@ function toggleSortBtn(name) {
   var sortingBtns = document.querySelectorAll('.sorting-bar__order');
 
   sortingBtns.forEach((el) => {
-    var shouldBeActive = el.dataset.hasOwnProperty("jsOrderby_" + name);
-
+    var shouldBeActive = el.dataset.hasOwnProperty('jsOrderby_' + name);
     el.classList.toggle('sorting-bar__order--active', shouldBeActive);
-    if (shouldBeActive) {
-      document.querySelector('.sorting-bar__dropdownBtn').innerHTML = el.innerHTML;
-    }
   });
-  toggleSortDropdown(false);
-}
-
-/**
- * Toggles sorting dropdown visibility
- * @param {Boolean} open
- */
-function toggleSortDropdown(open) {
-  if (open !== undefined) {
-    document.querySelector('.sorting-bar__dropdownContent')
-      .classList.toggle('sorting-bar__dropdownContent--active', open);
-  } else {
-    document.querySelector('.sorting-bar__dropdownContent')
-      .classList.toggle('sorting-bar__dropdownContent--active');
-  }
 }
 
 /**
@@ -356,7 +337,6 @@ module.exports = {
   updateTimestamps: updateTimestamps,
   hideLoadMore: hideLoadMore,
   toggleSortBtn: toggleSortBtn,
-  toggleSortDropdown: toggleSortDropdown,
   toggleCommentDialog: toggleCommentDialog,
   showSuccessCommentMsg: showSuccessCommentMsg,
   displayCommentFormErrors: displayCommentFormErrors,

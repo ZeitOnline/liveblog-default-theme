@@ -32,15 +32,6 @@
   <div class="header-bar">
     <div class="sorting-bar">
       <div class="sorting-bar__orders">
-        <div class="sorting-bar__dropdownBtn" data-js-sort_dropdown_button>
-          {% if settings.postOrder == 'editorial' %}
-            {{  translate("Editorial") }}
-          {% elif settings.postOrder == 'newest_first' %}
-            {{  translate("Newest first") }}
-          {% elif settings.postOrder == 'oldest_first' %}
-            {{ translate("Oldest first") }}
-          {% endif %}
-        </div>
         <div class="sorting-bar__dropdownContent">
           <div
             class="sorting-bar__order {%if settings.postOrder == 'newest_first' %}sorting-bar__order--active{% endif %}"
