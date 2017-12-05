@@ -3,26 +3,22 @@
   &__order {
     @include clearfix();
     float: left;
-    margin-right: 25px;
-    padding-bottom: 8px;
+    margin-right: em(18px);
+    padding-bottom: em(4px);
     cursor: pointer;
     color: #999999;
     font-size: 1em;
     transition: color .1s ease-out;
-    &:hover,
     &--active {
       color: $black;
-      margin-bottom: -2px;
       border-bottom: 2px solid $black;
     }
-  }
-  &__dropdownBtn {
-    display: none;
-    background: transparent url('../images/dropdown_arrow.svg') right center no-repeat;
-    padding-right: 20px;
-    cursor: pointer;
-    padding-left: .5rem;
-    position: relative;
-    z-index: 2;
+    @include hover(){
+      color: $black;
+      border-bottom: 2px solid $black;
+    }
+    @include respond-min($break-tablet-min){
+      margin-right: em(32px);
+    }
   }
 }
