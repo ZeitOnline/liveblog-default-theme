@@ -1,6 +1,28 @@
-.sorting-bar__orders,
-.sorting-bar__dropdownContent {
-  > * {
-    display: inline;
+.sorting-bar {
+  margin-right: 10px;
+  &__order {
+    @include clearfix();
+    float: left;
+    margin-right: 25px;
+    padding-bottom: 8px;
+    cursor: pointer;
+    color: #999999;
+    font-size: 1em;
+    transition: color .1s ease-out;
+    &:hover,
+    &--active {
+      color: $black;
+      margin-bottom: -2px;
+      border-bottom: 2px solid $black;
+    }
+  }
+  &__dropdownBtn {
+    display: none;
+    background: transparent url('../images/dropdown_arrow.svg') right center no-repeat;
+    padding-right: 20px;
+    cursor: pointer;
+    padding-left: .5rem;
+    position: relative;
+    z-index: 2;
   }
 }
