@@ -51,7 +51,7 @@
                 {"value": "newest_first", "label": "Newest first"},
                 {"value": "oldest_first", "label": "Oldest first"}
             ],
-            "default": "editorial"
+            "default": "newest_first"
         },
         {
             "name": "autoApplyUpdates",
