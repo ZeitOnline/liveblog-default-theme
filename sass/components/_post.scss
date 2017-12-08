@@ -1,7 +1,17 @@
 $author-avatar-width: em(42px);
 
+.lb-item {
+	margin-bottom: em(24px);
+	// @ TODO override embed's inlined link-color
+	@include default-article-textlink();
+	a {
+		text-decoration: none;
+	}
+}
+
 .lb-post {
 	position: relative;
+	// @TODO mobile dimensions
 	padding: em(8px 8px 8px 60px);
 	background-color: $grey--light;
 	margin-bottom: em(20px);
@@ -24,6 +34,9 @@ $author-avatar-width: em(42px);
 			z-index: 1;
 		}
 	}
+	@include respond-min($break-tablet-min) {
+		padding: em(16px 24px 16px 60px);
+	};
 }
 
 .lb-post-header {
