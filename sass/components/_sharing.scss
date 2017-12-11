@@ -1,11 +1,9 @@
 $share_items_list: facebook twitter email permalink;
 
 .lb-sharing {
-	display: flex;
 	&__list {
 		padding: 0;
 		list-style: none;
-		margin-left: auto;
 	}
 	&__item {
 		width: em(24px);
@@ -15,7 +13,7 @@ $share_items_list: facebook twitter email permalink;
 			opacity: 0.75;
 		};
 		&:not(:last-child) {
-			margin-right: em(5px);
+			margin-right: em(18px);
 		}
 		@each $share_icon in $share_items_list {
 			&--#{$share-icon} {
@@ -31,5 +29,8 @@ $share_items_list: facebook twitter email permalink;
 			display: inline-block;
 			height: 100%;
 		}
+	}
+	@include respond-min($break-tablet-min){
+		@include center-content($zon-desktop-content-width);
 	}
 }

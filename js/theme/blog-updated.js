@@ -7,7 +7,7 @@ var helpers = require('./helpers'),
       if (this.blogUpdatedTime) {
         var convertedTime = helpers.convertTimestamp(this.blogUpdatedTime);
 
-        this.blogUpdatedBox.innerHTML = 'Aktualisiert am ' + convertedTime;
+        this.blogUpdatedBox.innerHTML = '<span>Aktualisiert am ' + convertedTime + '</span>';
       }
     }
   };

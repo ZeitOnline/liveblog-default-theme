@@ -1,5 +1,12 @@
 $author-avatar-width: em(42px);
 
+.lb-items-container {
+	@include respond-min($break-tablet-min) {
+		@include center-content($zon-desktop-content-width);
+	};
+}
+
+
 .lb-item {
 	margin-bottom: em(24px);
 	// @ TODO override embed's inlined link-color
@@ -11,44 +18,48 @@ $author-avatar-width: em(42px);
 
 .lb-post {
 	position: relative;
-	// @TODO mobile dimensions
-	padding: em(8px 8px 8px 60px);
 	background-color: $grey--light;
 	margin-bottom: em(20px);
+	padding: em(8px);
 	.text {
 		font-family: $font-franziska;
-		font-size: em(18px);
+		font-size: em(20px);
 		line-height: 1.4;
 		margin-bottom: em(20px);
 	}
 	&:not(:last-child):not(.sticky):not(.empty-message) {
-		&:after {
-			content: '';
-			position: absolute;
-			width: 2px;
-			height: 100%;
-			height: calc(100% - 30px);
-			background-color: #ccc;
-			top: em(50px);
-			left: em(30px);
-			z-index: 1;
+		.lb-items-container{
+			&:before {
+				content: '';
+				position: absolute;
+				width: 2px;
+				height: calc(100% - 30px);
+				background-color: #ccc;
+				margin-left: em(-32px);
+				z-index: 1;
+			}
 		}
 	}
-	@include respond-min($break-tablet-min) {
-		padding: em(16px 24px 16px 60px);
-	};
+	@include respond-min($break-tablet-min){
+		padding-top: em(54px);
+		padding-bottom: em(8px)
+	}
 }
 
 .lb-post-header {
-	@include clearfix();
 	color: $zon_grey;
 	letter-spacing: $zon-letter-spacing-s;
 	margin-bottom: em(20px);
 	position: relative;
 	line-height: $author-avatar-width;
+	@include respond-min($break-tablet-min){
+		display: flex;
+		@include center-content($zon-desktop-content-width);
+	}
 }
 
 .lb-author {
+	margin-left: auto;
 	&__name {
 		font-weight: bold;
 	}
@@ -66,11 +77,17 @@ $author-avatar-width: em(42px);
 }
 
 @include respond-min($break-phablet-min) {
-	.lb-post-metadata {
-		float: left;
+	.lb-post-header {
+		@include respond-min($break-tablet-min){
+			@include center-content($zon-desktop-content-width);
+		};
+	}
+	.lb-post-updated {
+		@include respond-min($break-tablet-min){
+			@include center-content($zon-desktop-content-width);
+		};
 	}
 	.lb-author {
-		float: right;
 		&__name {
 			display: inline-block;
 		}
