@@ -108,6 +108,7 @@ function addPosts(posts, position) {
 
   els.timelineNormal.insertAdjacentHTML(position, timelineNormal);
   els.timelineSticky.insertAdjacentHTML(position, timelineSticky);
+  els.timelineSticky.classList.remove('sticky--empty');
 
   checkPending();
   attachSlideshow();
@@ -177,7 +178,6 @@ function displayNewPosts() {
 
 /**
  * Trigger embed provider unpacking
- * Todo: Make required scripts available on subsequent loads
  */
 function loadEmbeds() {
   if (window.instgrm) {
@@ -187,6 +187,12 @@ function loadEmbeds() {
   if (window.twttr) {
     twttr.widgets.load();
   }
+
+  if (window.FB) {
+    window.FB.XFBML.parse();
+  }
+
+  attachSlideshow();
 }
 
 function clearCommentDialog() {
@@ -279,13 +285,7 @@ function displayCommentFormErrors(errors) {
 
 function attachSlideshow() {
   const slideshow = new Slideshow();
-  const slideshowImages = document.querySelectorAll('article.slideshow img');
-
-  if (slideshowImages) {
-    slideshowImages.forEach((image) => {
-      image.addEventListener('click', slideshow.start);
-    });
-  }
+  slideshow.init();
 }
 
 function attachPermalink() {

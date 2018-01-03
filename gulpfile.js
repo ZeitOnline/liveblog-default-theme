@@ -1,41 +1,48 @@
 'use strict';
-/* eslint-disable */
-var gulp = require('gulp')
-  , browserify = require('browserify')
-  , nunjucksify = require('nunjucksify')
-  , gulpLoadPlugins = require('gulp-load-plugins')
-  , source = require('vinyl-source-stream')
-  , buffer = require('vinyl-buffer')
-  , plugins = gulpLoadPlugins()
-  , del = require('del')
-  , eslint = require('gulp-eslint')
-  , fs = require('fs')
-  , path = require('path')
-  , nunjucks = require('nunjucks')
-  , dateFilter = require('nunjucks-date-filter')
-  , purify = require('gulp-purifycss')
-  , cleanCSS = require('gulp-clean-css')
-  , amphtmlValidator = require('amphtml-validator')
-  , sourcemaps = require('gulp-sourcemaps');
 
-const cwd = process.cwd();
+const gulp = require('gulp');
+const browserify = require('browserify');
+const nunjucksify = require('nunjucksify');
+const source = require('vinyl-source-stream');
+const buffer = require('vinyl-buffer');
+const plugins = require('gulp-load-plugins')();
+const del = require('del');
+const fs = require('fs');
+const path = require('path');
+const nunjucks = require('nunjucks');
+const dateFilter = require('nunjucks-date-filter');
+const amphtmlValidator = require('amphtml-validator');
+const sourcemaps = require('gulp-sourcemaps');
+
+const CWD = process.cwd();
+var DEBUG = plugins.util.env.NODE_ENV ? plugins.util.env.NODE_ENV : process.env.NODE_ENV !== "production";
+
 // Command-line and default theme options from theme.json.
-var theme = require(path.resolve(cwd, './theme.json'));
-var node_env = plugins.util.env.NODE_ENV ? plugins.util.env.NODE_ENV : process.env.NODE_ENV;
-const DEBUG = node_env!== "production";
-const inputPath = theme.extends ? `./node_modules/liveblog-${theme.extends}-theme/` : '';
-console.log(`## DEBUG: ${DEBUG} ###
-### NODE_ENV: ${node_env} ###`)
+let theme = {};
+const loadThemeJSON = () => {
+  theme = require(path.resolve(`${CWD}/theme.json`));
+};
+loadThemeJSON();
 
-let argvKey = 0,
-  apiHost = '',
-  blogId = '',
-  protocol = '',
-  apiResponse = {
-    posts: {_items: []},
-    stickyPosts: {_items: []}
+const inputPath = theme.extends ?
+  path.resolve(`${CWD}/node_modules/liveblog-${theme.extends}-theme/`) :
+  path.resolve(`${CWD}/`);
+
+const options = require(path.resolve(inputPath,'./test/options.json'));
+
+let argvKey = 0;
+let apiHost = "";
+let blogId = "";
+let protocol = "";
+let apiResponse = {
+  posts: {
+    _items: []
   },
-  match = [];
+  stickyPosts: {
+    _items: []
+  }
+};
+let match = [];
 
 const http = require('http');
 const https = require('https');
@@ -48,7 +55,6 @@ const https = require('https');
 
 if (argvKey !== 0) {
   match = process.argv[argvKey]
-    //.match(/^(http:\/\/|https:\/\/|\/\/)([^/]+)\/(api\/client_blogs|embed)\/(\w+)/i);
     .match(/^(http:\/\/|https:\/\/|\/\/)([^\/]+)\/(api\/client_blogs|embed|[^\/]+\/blogs)\/(\w+)/i);
 }
 
@@ -90,7 +96,7 @@ if (match.length > 0) {
 
   query.query.filtered.filter.and[0].term.sticky = false;
 
-  request.get(`${postsEndpoint}?source=${JSON.stringify(query)}`, (response) => {
+  request.get(`${postsEndpoint}?max_results=${options.blog.theme_settings.postsPerPage}&source=${JSON.stringify(query)}`, (response) => {
     let body = '';
 
     response.on('data', (d) => {
@@ -102,12 +108,16 @@ if (match.length > 0) {
   });
 }
 
-const templatePath = [
-    path.resolve(__dirname, '../../templates'),
-    path.resolve(__dirname, 'templates')
-  ],
-  nunjucksLoader = new nunjucks.FileSystemLoader(templatePath),
-  nunjucksEnv = new nunjucks.Environment(nunjucksLoader);
+let templatePath = [
+  path.resolve(`${CWD}/templates`)
+];
+
+if (theme.extends) {
+  templatePath.push(path.resolve(`${CWD}/node_modules/liveblog-${theme.extends}-theme/templates`));
+}
+
+const nunjucksLoader = new nunjucks.FileSystemLoader(templatePath);
+const nunjucksEnv = new nunjucks.Environment(nunjucksLoader);
 
 // Add nunjucks-date-filter and set default date format.
 // TODO: get date format from theme settings.
@@ -115,25 +125,33 @@ dateFilter.setDefaultFormat('dddd, MMMM Do, YYYY, h:MM:ss A');
 nunjucksEnv.addFilter('date', dateFilter);
 
 // ampify filter used by AMP theme
-var ampifyFilter = function(html){
+const ampifyFilter = (html) => {
   if (html.search(/iframe/i) > 0) {
     // html contains iframe
-    var src = (/src=\"([^\"]+)\"/).exec(html)[1],
-      width = (/width=\"([^\"]+)\"/).exec(html)[1],
-      height = (/height=\"([^\"]+)\"/).exec(html)[1];
+    const src = (/src=\"([^\"]+)\"/).exec(html)[1];
+    var width = (/width=\"([^\"]+)\"/).exec(html)[1];
+    var height = (/height=\"([^\"]+)\"/).exec(html)[1];
 
-    return [
-      '<amp-iframe width=' + width,
-      'height=' + height,
-      'layout="responsive"',
-      'frameborder="0"',
-      'sandbox="allow-scripts allow-same-origin allow-popups"',
-      'src="' + src + '">',
-      '<p placeholder>Loading...</p>',
-      '</amp-iframe>'
-    ].join(' ');
+    if (!width || width.search("%") >= 0) {
+      width = '350';
+    }
+
+    if (!height) {
+      height = '350';
+    }
+
+    return `
+    <amp-iframe
+        width=${width}
+        height=${height}
+        layout="responsive"
+        frameborder="0"
+        sandbox="allow-scripts
+        allow-same-origin allow-popups"
+        src="${src}">
+            <p placeholder>Loading...</p>
+    </amp-iframe>`;
   }
-  
   return html;
 };
 
@@ -170,32 +188,18 @@ function getThemeSettings(options) {
   return _options;
 }
 
-
-// Function to async reload default theme options.
-function loadThemeJSON() {
-  fs.readFile(path.resolve(cwd, 'theme.json'), 'utf8', (err, data) => {
-    theme = JSON.parse(data);
-  });
-}
-
-gulp.task('lint', () => gulp.src([path.resolve(inputPath, 'js/**/*.js'),path.resolve(inputPath, 'gulpfile.js')])
-  .pipe(eslint({ quiet: true }))
-  .pipe(eslint.format())
-  .pipe(eslint.failAfterError())
+gulp.task('lint', () =>
+  gulp.src([
+    path.resolve(inputPath, 'js/**/*.js'),
+    path.resolve(inputPath, 'gulpfile.js')
+  ])
+  .pipe(plugins.eslint({ quiet: true }))
+  .pipe(plugins.eslint.format())
+  .pipe(plugins.eslint.failAfterError())
 );
-
-//gulp.task('move-templates', () => gulp.src(inputPath + 'templates/*.html')
-//  .pipe(gulp.dest(inputPath + 'templates-dist')));
-
-//gulp.task('move-subtemplates', ['move-templates'], () => gulp.src('./templates/*.html')
-//  .pipe(gulp.dest(inputPath + 'templates-dist')));
 
 // Browserify.
 let browserifyPreviousTasks = ['clean-js'];
-
-//if (process.env.EXTENDED_MODE) {
-//  browserifyPreviousTasks.push('move-subtemplates');
-//}
 
 gulp.task('browserify', browserifyPreviousTasks, (cb) => {
   if (theme.ampTheme) {
@@ -234,8 +238,7 @@ gulp.task('browserify', browserifyPreviousTasks, (cb) => {
     .pipe(gulp.dest('.'));
 });
 
-// Compile SASS files.
-gulp.task('sass', ['clean-css'], () => {
+const sassCommon = (cleanCss) => {
   var sassFiles = [];
   // Name of the sass theme file.
   let themeSass = `./sass/${theme.name}.scss`;
@@ -243,8 +246,8 @@ gulp.task('sass', ['clean-css'], () => {
   sassFiles.push(fs.existsSync(themeSass) ? themeSass : './sass/*.sass');
 
   if ( !theme.onlyOwnCss && theme.extends ) {
-    let themeSass = path.resolve(inputPath,`./sass/${theme.extends}.sass`);
-    sassFiles.push(fs.existsSync(themeSass) ? themeSass : path.resolve(inputPath,'./sass/*.sass'));
+    let themeSass = path.resolve(`${inputPath}/sass/${theme.extends}.sass`);
+    sassFiles.push(fs.existsSync(themeSass) ? themeSass : path.resolve(`${inputPath}/sass/*.sass`));
   }
 
   return gulp.src(sassFiles)
@@ -260,12 +263,46 @@ gulp.task('sass', ['clean-css'], () => {
       this.emit('end');
     })
     .pipe(plugins.if(!DEBUG, plugins.minifyCss({compatibility: 'ie8'})))
+    /* @TODO:
+     *  generate a full api support with
+     *      - pinned
+     *          - both need to be enable ( have support in the code for `stickyPosition`='both')
+     *          - with possition below menu bar
+     *          - with possition above menu bar
+     *      - highlight
+     *      - scorecards
+     *      - text
+     *      - image
+     *      - quote
+     *      - comments
+     *          - with bellow reply
+     *          - with on top reply
+     *      - advertisements
+     *          - local
+     *          - remote
+     *      - all supported emebds
+     *          - twitter
+     *          - facebook
+     *          - instagram
+     *          - youtube
+     *          - generic ( link )
+     * language settings if any.
+     * all posts above needs to be added and then enable purifycss.
+     * otherwise purifycss will remove those css "unused"/not present.
+    */
+    //.pipe(plugins.if(cleanCss, plugins.purifycss([BUILD_HTML])))
+    .pipe(plugins.if(cleanCss, plugins.cleanCss({compatibility: 'ie8'})));
+};
+
+// Compile SASS files.
+gulp.task('sass', ['clean-css'], () =>
+    sassCommon(!DEBUG)
     .pipe(plugins.concat(`${theme.name}.css`))
     .pipe(plugins.rev())
     .pipe(gulp.dest('./dist'))
     .pipe(plugins.rev.manifest('dist/rev-manifest.json', {merge: true}))
-    .pipe(gulp.dest('.'));
-});
+    .pipe(gulp.dest('.'))
+);
 
 
 // Inject API response into template for dev/test purposes.
@@ -279,7 +316,7 @@ gulp.task('index-inject', ['sass', 'browserify'], () => {
     testdata.options.api_host = `${protocol}${apiHost}`;
     testdata.options.blog._id = blogId;
   }
-  var index = `./templates/template-index.html`;
+  const index = './templates/template-index.html';
   var indexTask = gulp.src(fs.existsSync(index) ? index : path.resolve(inputPath,index))
     .pipe(plugins.inject(sources))
     .pipe(plugins.nunjucks.compile({
@@ -292,24 +329,16 @@ gulp.task('index-inject', ['sass', 'browserify'], () => {
     }, apiResponse.posts._items.length > 0 ? {} : nunjucksOptions));
 
   if (theme.ampTheme) {
-    let sassFiles = [],
-      themeSass = path.resolve(cwd, `./sass/${theme.extends}.scss`);
-    sassFiles.push(fs.existsSync(themeSass) ? themeSass : path.resolve(cwd,'./sass/*.sass'));
 
-    indexTask = indexTask.pipe(gulp.src(sassFiles)
-      .pipe(plugins.sass({
-        paths: [path.resolve(inputPath, 'sass')]
-      }))
-      .pipe(purify([BUILD_HTML]))
-      .pipe(cleanCSS())
-      .pipe(gulp.dest('./build/amp/'))
-      .pipe(plugins.inject(gulp.src(['./build/amp/*.css']), {
+    indexTask = indexTask.pipe(plugins.inject(
+      sassCommon(false),
+      {
         starttag: '<!-- inject:amp-styles -->',
         transform: function(filepath, file) {
           return file.contents.toString();
         },
         removeTags: true
-      }))
+      })
     );
   }
   return indexTask.pipe(plugins.rename("index.html"))
@@ -355,7 +384,6 @@ gulp.task('template-inject', ['sass', 'browserify'], () => {
       include_js_options: false,
       debug: DEBUG
     }))
-
     // Add nunjucks/jinja2 template for server-side processing.
     .pipe(plugins.inject(gulp.src(templates), {
       starttag: '<!-- inject:template-content -->',
@@ -372,7 +400,7 @@ gulp.task('template-inject', ['sass', 'browserify'], () => {
 
 // Replace assets paths in theme.json file and reload options.
 gulp.task('theme-replace', ['browserify', 'sass'], () => {
-  var manifest = require(path.resolve(cwd, "./dist/rev-manifest.json"));
+  var manifest = require(path.resolve(CWD, "./dist/rev-manifest.json"));
   var base = './',
     cssName = new RegExp(`${theme.name}-.*\.css`, 'g'),
     jsName = new RegExp(`${theme.name}-.*\.js`, 'g');
@@ -386,7 +414,7 @@ gulp.task('theme-replace', ['browserify', 'sass'], () => {
   loadThemeJSON();
 });
 
-gulp.task('serve', ['browserify', 'sass', 'index-inject'], () => {
+gulp.task('server', ['browserify', 'sass', 'index-inject'], () => {
   plugins.connect.server({
     port: 8008,
     root: '.',
@@ -396,7 +424,7 @@ gulp.task('serve', ['browserify', 'sass', 'index-inject'], () => {
 });
 
 // Watch
-gulp.task('watch-static', ['serve'], () => {
+gulp.task('watch-static', ['server'], () => {
   var js = gulp.watch(paths.js, ['browserify', 'index-inject'])
     , sass = gulp.watch(paths.sass, ['sass', 'index-inject'])
     , templates = gulp.watch(paths.templates, ['index-inject']);
@@ -408,13 +436,17 @@ gulp.task('watch-static', ['serve'], () => {
   });
 });
 
+gulp.task('set-production', () => {DEBUG = false;});
+
 // Clean CSS
 gulp.task('clean-css', () => del(['dist/*.css']));
 
 // Clean JS
 gulp.task('clean-js', () => del(['dist/*.js']));
 
-gulp.task('default', ['browserify', 'sass', 'theme-replace', 'template-inject']);
+gulp.task('production', ['browserify', 'sass', 'theme-replace', 'template-inject']);
+
+gulp.task('default', ['set-production', 'production']);
 
 // Default build for development
 gulp.task('devel', ['browserify', 'sass', 'theme-replace', 'index-inject']);
