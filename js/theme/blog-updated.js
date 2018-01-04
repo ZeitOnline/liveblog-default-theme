@@ -1,7 +1,7 @@
 
 var helpers = require('./helpers'),
   blogUpdated = {
-    blogUpdatedBox: document.querySelector('.lb-timeline__blog-updated'),
+    blogUpdatedBox: document.querySelector('.header-bar__blog-updated'),
     blogUpdatedTime: LB.blog._updated,
     init: function() {
       if (this.blogUpdatedTime) {

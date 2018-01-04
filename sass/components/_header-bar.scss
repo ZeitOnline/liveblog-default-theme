@@ -1,26 +1,40 @@
 .header-bar {
   @include clearfix();
   min-height: em(40px);
-  &__highlight {
-    text-indent: -9999px;
-    color: #999999;
-    width: 32px;
-    background-image: url("../images/highlighted.svg");
-    background-repeat: no-repeat;
-    background-size: 14px;
-    background-position: center;
-    border: 1px solid $zon_grey;
-    border-radius: 2px;
-    padding: 6px 15px;
-    margin-top: 0px;
-    margin-left: 0px;
-    @include hover() {
-      border: 1px solid #cccccc;
-      outline: none;
+  // center content
+  > * { 
+    > * {
+      display: block;
+      @include respond-min($break-tablet-min){
+        @include center-content($zon-desktop-content-width);
+      }
     }
-    &--active {
-      background-color: #f2f5f8;
-      border: 1px solid #cccccc;
+  }
+  &__blog-updated {
+    background-color: #ffe246;
+  }
+  &__interaction {
+    color: #dbdbdb;
+    background-color: $grey--mid;
+    span {
+      margin-right: em(12px);
+      padding-bottom: em(2px);
+      @include hover() {
+        cursor: pointer;
+        color: #fff;
+        border-bottom: 2px solid #fff;
+      }
+      @include respond-min($break-tablet-min) {
+        margin-right: em(32px);
+      }
+      &[class$="--active"] {
+        color: #fff;
+        border-bottom: 2px solid #fff;
+      }
     }
+  }
+  > div {
+    padding-top: em(8px);
+    padding-bottom: em(8px);
   }
 }

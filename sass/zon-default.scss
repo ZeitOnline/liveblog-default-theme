@@ -4,13 +4,11 @@
 @import "base/utils";
 @import "base/mixins";
 @import "base/constants";
-@import "components/sorting-bar";
 @import "components/header-bar";
 @import "components/post";
 @import "components/post-metadata";
 @import "components/sharing";
 @import "components/image";
-@import "components/timeline";
 
 .lb-wrapHtml {
 	font-family: $font-tabletgothic;
