@@ -1,7 +1,7 @@
 {
     "label": "ZON default WIP",
     "name": "zon-default",
-    "version": "3.3.34",
+    "version": "3.3.35",
     "asyncTheme": true,
     "seoTheme": true,
     "author": "Sourcefabric <contact@sourcefabric.org>",
@@ -16,10 +16,10 @@
         "url" : "git@github.com:liveblog/liveblog-default-theme"
     },
     "license": "AGPL-3.0",
-    "devStyles": ["dist/zon-default-d2b57cc67d.css"],
-    "devScripts": ["dist/zon-default-b4799b8e45.js"],
-    "styles": ["dist/zon-default-d2b57cc67d.css"],
-    "scripts": ["dist/zon-default-b4799b8e45.js"],
+    "devStyles": ["dist/zon-default-e752969e2f.css"],
+    "devScripts": ["dist/zon-default-7946cead63.js"],
+    "styles": ["dist/zon-default-e752969e2f.css"],
+    "scripts": ["dist/zon-default-7946cead63.js"],
     "options": [
         {
             "name": "datetimeFormat",

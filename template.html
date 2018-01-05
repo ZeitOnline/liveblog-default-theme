@@ -31,27 +31,24 @@
 
   <!-- Header -->
   <div class="header-bar">
-    <div class="sorting-bar">
-      <div class="sorting-bar__orders">
-        <div class="sorting-bar__dropdownContent">
-          <div
-            class="sorting-bar__order {%if settings.postOrder == 'newest_first' %}sorting-bar__order--active{% endif %}"
-            data-js-orderby_descending>
-            {{  translate("Newest first") }}
-          </div>
-          <div
-            class="sorting-bar__order {%if settings.postOrder == 'oldest_first'%}sorting-bar__order--active{% endif %}"
-            data-js-orderby_ascending>
-            {{ translate("Oldest first") }}
-          </div>
-        </div>
+    <div class="header-bar__blog-updated"></div>
+    <div class="header-bar__interaction">
+      <div> <!-- wrap centered content -->
+        <span
+          class="sorting-bar__order {%if settings.postOrder == 'newest_first' %}sorting-bar__order--active{% endif %}"
+          data-js-orderby_descending>
+          {{  translate("Newest first") }}
+        </span>
+        <span  
+          class="sorting-bar__order {%if settings.postOrder == 'oldest_first'%}sorting-bar__order--active{% endif %}"
+          data-js-orderby_ascending>
+          {{ translate("Oldest first") }}
+        </span>
+        {% if settings.hasHighlights %}
+          <span class="header-bar__highlight" data-js-show-highlighted>&#9733; Nur {{ translate('Highlights') }}</span>
+        {% endif %}
       </div>
     </div>
-    <div class="header-bar__actions"></div>
-      {% if settings.hasHighlights %}
-          <button class="header-bar__highlight" data-js-show-highlighted><span>{{ translate('Highlights') }}</span></button>
-      {% endif %}
-
       {% if settings.canComment %}
         <button class="header-bar__comment" data-js-show-comment-dialog>
             {{ translate("Comment") }}
@@ -80,7 +77,6 @@
   <!-- Comment End -->
 
   <!-- Timeline -->
-  <div class="lb-timeline__blog-updated"></div>
   <div class="timeline-body timeline-body--loaded">
       <div data-one-new-update class="lb-post new-updates mod--displaynone">
         <div>{{ translate("See one new update") }}</div>
