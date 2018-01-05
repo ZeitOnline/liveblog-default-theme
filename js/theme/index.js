@@ -8,6 +8,7 @@ const handlers = require('./handlers'),
   viewmodel = require('./viewmodel'),
   view = require('./view'),
   pageview = require('./pageview'),
+  settings = window.LB.settings,
   localAnalytics = require('./local-analytics'),
   blogUpdated = require('./blog-updated');
 
@@ -25,8 +26,10 @@ module.exports = {
     blogUpdated.init();
 
     view.updateTimestamps();
-    setInterval(() => {
-      view.updateTimestamps(); // Convert ISO dates to timeago
-    }, 1000);
+    if (!settings.datetimeFormat || settings.datetimeFormat === 'ago') {
+      setInterval(() => {
+        view.updateTimestamps(); // Convert ISO dates to timeago
+      }, 1000);
+    }
   }
 };
