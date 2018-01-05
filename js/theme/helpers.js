@@ -16,6 +16,13 @@ function convertTimestamp(timestamp) {
   return moment(timestamp).format(settings.datetimeFormat);
 }
 
+function formatTimestamp(timestamp, format) {
+  if (format === 'ago') {
+    return moment(timestamp).fromNow();
+  }
+  return moment(timestamp).format(format);
+}
+
 /**
  * Wrap element selector api
  * @param {string} query - a jQuery syntax DOM query (with dots)
@@ -71,5 +78,6 @@ module.exports = {
   getElems: getElems,
   getJSON: getJSON,
   post: post,
+  formatTimestamp: formatTimestamp,
   convertTimestamp: convertTimestamp
 };
