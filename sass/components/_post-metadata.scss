@@ -1,17 +1,18 @@
 $status_items: pinned highlighted;
 
 .lb-post-metadata {
-	&__status {
-		margin-right: em(8px);
-		display: inline-block;
-		width: em(14px);
-		height: em(14px);
-		@each $status in $status_items {
-			&--#{$status} {
-				background-image: url('../images/#{$status}.svg');
-				background-size: cover;
-				background-repeat: no-repeat;
-			}
-		}
-	}
+    &__status {
+        margin-right: em(8px);
+        display: inline-block;
+        width: em(14px);
+        height: em(14px);
+        @each $status in $status_items {
+            &--#{$status} {
+                background-image: url('../images/#{$status}.svg');
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+        }
+    }
+    
 }
