@@ -19,22 +19,25 @@
     span {
       margin-right: em(12px);
       padding-bottom: em(2px);
-      @include hover() {
-        cursor: pointer;
+      white-space: nowrap;
+      line-height: 2;
+      &[class$="--active"] {
         color: #fff;
         border-bottom: 2px solid #fff;
       }
       @include respond-min($break-tablet-min) {
         margin-right: em(32px);
       }
-      &[class$="--active"] {
-        color: #fff;
-        border-bottom: 2px solid #fff;
+      @include respond-min($break-desktop-min) {
+        @include hover() {
+          cursor: pointer;
+          color: #fff;
+          border-bottom: 2px solid #fff;
+        }
       }
     }
   }
-  > div {
-    padding-top: em(8px);
-    padding-bottom: em(8px);
+  > div:not(:empty) {
+    padding: em(8px);
   }
 }
