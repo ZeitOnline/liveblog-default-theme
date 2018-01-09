@@ -43,8 +43,9 @@
         <div class="lb-advertisement">{{ translate('Advertisement') }}</div>
       {% endif %}
 
-      <span class="lb-post-metadata__time relativeDate" data-js-timestamp="{{ postDate }}" data-js-format="LT">
-        {{- postDate -}}
+      <span class="lb-post-metadata__time">
+        <span class="relativeDate" data-js-timestamp="{{ postDate }}"  data-js-format="LT">{{- postDate -}}</span>
+        <span>Uhr</span>
       </span>
       <span class="lb-post-metadata__date relativeDate" data-js-timestamp="{{ postDate }}" data-js-format="LL">
         {{- postDate -}}
