@@ -1,0 +1,29 @@
+<div class="lb-sharing">
+    <ul class="lb-sharing__list">
+        <li class="lb-sharing__item lb-sharing__item--facebook">
+            <a class="lb-post-shareBox__item"
+            onclick="window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=570,height=400');return false;"
+            data-link-base="//www.facebook.com/sharer.php?s=100&p[title]=&p[url]="
+            data-link-id={{item._id}}>
+            </a>
+        </li>
+        <li class="lb-sharing__item lb-sharing__item--twitter">
+            <a class="lb-post-shareBox__item"
+            onclick="window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=570,height=400');return false;"
+            data-link-base="//twitter.com/home?status=" data-link-id={{item._id}}>
+            </a>
+        </li>
+        <li class="lb-sharing__item lb-sharing__item--email">
+            <a class="lb-post-shareBox__item"
+            onclick="window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=1024,height=768');return false;"
+            data-link-base="mailto:?to=&subject=Liveblog&body="
+            data-link-id={{item._id}}>
+            </a>
+        </li>
+        <!-- permalink -->
+        <li class="lb-sharing__item lb-sharing__item--permalink">
+            <a class="lb-post-permalink" id="{{ item._id }}" target="_blank"></a>
+        </li>
+        <!-- end permalink -->
+    </ul>
+</div>

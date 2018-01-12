@@ -42,7 +42,6 @@
       {% elif item.post_items_type == "advertisement" %}
         <div class="lb-advertisement">{{ translate('Advertisement') }}</div>
       {% endif %}
-
       <span class="lb-post-metadata__time">
         <span class="relativeDate" data-js-timestamp="{{ postDate }}"  data-js-format="LT">{{- postDate -}}</span>
         <span>Uhr</span>
@@ -92,101 +91,14 @@
     </div>
     <!-- end author -->
   </div>
-
   {% endif %}
   <!-- end sticky position toggle -->
-  <!-- item start -->
-  <div class="lb-items-container">
-  {% if type == "comment" %}
-    {% include "template-post-comment.html" %}
-  {% else %}
-    {% if item and item.groups and item.groups[1] and item.groups[1].refs and (item.groups[1].refs | length > 0) %}
-        {% for ref in item.groups[1].refs %}
-          {% if ref.item.item_type == "image" %}
-            {% if settings.showGallery and loop.index0 + 1 < loop.length and item.groups[1].refs[loop.index0 + 1].item.item_type == "image" and (loop.index0 - 1 < 0 or not (loop.index0 > 0 and item.groups[1].refs[loop.index0 - 1].item.item_type == "image")) %}
-              {# this works only for first element in gallery loop bcs variables are scoped in jinja2 #}
-              {% set galleryItem = true %}
-              <!-- slideshow start -->
-              <div class="lb-slideshow">
-                <div class="lb-slideshow_frame">
-                  <div class="lb-slideshow_slides">
-            {% endif %}
-            {# if previous item was an image and current item is an image as well = we are inside gallery loop #}
-            {% if settings.showGallery and item.groups[1].refs[loop.index0 - 1].item.item_type == "image" %}
-              {% set galleryItem = true %}
-            {% endif %}
-            <!-- image item start -->
-            <div class="lb-item {% if ref.item.meta.media.renditions.original.height > ref.item.meta.media.renditions.original.width %}portrait{% endif %}{{ref.item.item_type}}">
-          {% else %}
-            <!-- item start -->
-            <div class="lb-item {{ref.item.item_type}}">
-          {% endif %}
-          {% if ref.item.item_type == "embed" %}
-            {% include "template-item-embed.html" %}
-          {% elif ref.item.item_type == "image" and galleryItem %}
-            {% include "template-item-galleryImage.html" %}
-          {% elif ref.item.item_type == "image" %}
-            {% include "template-item-image.html" %}
-          {% elif ref.item.item_type == "quote" %}
-            {% include "template-item-quote.html" %}
-          {% elif ref.item.item_type == "comment" %}
-            {% include "template-item-comment.html" %}
-          {% else %}
-            <article>{{ ref.item.text | safe }}</article>
-          {% endif %}
-          </div>
-          <!-- item end -->
-          {% if settings.showGallery and ref.item.item_type == "image" and loop.index0 - 1 >= 0 and item.groups[1].refs[loop.index0 - 1].item.item_type == "image" and item.groups[1].refs[loop.index0 + 1].item.item_type != "image" %}    </div>
-                <span class="lb-slideshow_prev">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 501.5 501.5"><g><path fill="#2E435A" d="M302.67 90.877l55.77 55.508L254.575 250.75 358.44 355.116l-55.77 55.506L143.56 250.75z"/></g></svg>
-                </span>
-                <span class="lb-slideshow_next">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 501.5 501.5"><g><path fill="#2E435A" d="M199.33 410.622l-55.77-55.508L247.425 250.75 143.56 146.384l55.77-55.507L358.44 250.75z"/></g></svg>
-                </span>
-              </div>
-            </div>
-            <!-- slideshow end -->
-          {% endif %}
-        {% endfor %}
-    {% endif %}
-  {% endif %}
-  </div>
-  <!-- item end -->
+  {% include "template-item.html" %}
     {% if settings.showUpdateDatetime and (item.content_updated_date != item.firstcreated) and item.post_items_type != "advertisement" -%}
       <div class="lb-post-updated">
         <span>{{ translate('Updated') }}</span> <span class="lb-post-updated-time relativeDate" data-js-timestamp="{{item.content_updated_date}}">{{item.content_updated_date}}</span>
       </div>
     {%- endif %}
-    <div class="lb-sharing">
-      <ul class="lb-sharing__list">
-        <li class="lb-sharing__item lb-sharing__item--facebook">
-          <a class="lb-post-shareBox__item"
-          onclick="window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=570,height=400');return false;"
-          data-link-base="//www.facebook.com/sharer.php?s=100&p[title]=&p[url]="
-          data-link-id={{item._id}}>
-          </a>
-        </li>
-        <li class="lb-sharing__item lb-sharing__item--twitter">
-          <a class="lb-post-shareBox__item"
-          onclick="window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=570,height=400');return false;"
-          data-link-base="//twitter.com/home?status=" data-link-id={{item._id}}>
-          </a>
-        </li>
-        <li class="lb-sharing__item lb-sharing__item--email">
-          <a class="lb-post-shareBox__item"
-          onclick="window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=1024,height=768');return false;"
-          data-link-base="mailto:?to=&subject=Liveblog&body="
-          data-link-id={{item._id}}>
-          </a>
-        </li>
-        <!-- permalink -->
-        <li class="lb-sharing__item lb-sharing__item--permalink">
-          <a class="lb-post-permalink" id="{{ item._id }}" target="_blank">
-          </a>
-        </li>
-        <!-- end permalink -->
-      </ul>
-      <!-- end share -->
-    </div>
+  {% include "template-sharing.html" %}
 
 </article>
