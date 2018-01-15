@@ -17,7 +17,8 @@ $author-avatar-width: em(42px);
 	&__sticky-wrapper {
 		background-color: #fff;
 		position: relative;
-		padding-top: em(8px);
+		padding: em(16px 18px 8px);
+		margin-bottom: em(16px);
 		@include respond-min($break-tablet-min) {
 			@include center-content($zon-desktop-content-width);
 			box-shadow: em(-32px) 0 #fff;
@@ -29,12 +30,15 @@ $author-avatar-width: em(42px);
 	position: relative;
 	background-color: $grey--light;
 	margin-bottom: em(20px);
-	padding: em(8px);
+	padding: em(16px 24px 8px);
 	.text {
 		font-family: $font-franziska;
-		font-size: em(20px);
+		font-size: em(18px);
 		line-height: 1.4;
 		margin-bottom: em(20px);
+		@include respond-min($break-tablet-min) {
+			font-size: em(20px);
+		}
 	}
 	&:not(:last-child):not(.sticky):not(.empty-message) {
 		.lb-items-container{
@@ -109,6 +113,20 @@ $author-avatar-width: em(42px);
 
 .sticky {
 	.lb-post {
-		margin-bottom: em(40px);
+		margin-bottom: 0;
+		padding: em(8px);
+		&:first-child {
+			padding-top: em(32px);
+		} 
+		&:last-child {
+			margin-bottom: em(40px);
+		}
+	}
+	.lb-post-header {
+		margin-bottom: 0;
+		padding-left: em(16px);
+	}
+	.lb-post-metadata {
+		line-height: 1.5;
 	}
 }

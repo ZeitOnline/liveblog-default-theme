@@ -15,11 +15,15 @@
 	font-size: 1rem;
 	line-height: $base-line-height;
 	margin: 0 auto;
-	max-width: $break-desktop-min;
+	max-width: em(1000px);
 
 	* {
 		box-sizing: border-box;
 	}
+}
+
+.lb-wrapBody {
+	margin: 0;
 }
 
 .mod--displaynone {

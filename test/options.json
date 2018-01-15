@@ -181,7 +181,7 @@
     "gaCode": "UA-XXXXX-Y",
     "language": "de",
     "showSyndicatedAuthor": true,
-    "showUpdateDatetime": true
+    "showUpdateDatetime": false
   },
   "i18n": {
     "cs": {

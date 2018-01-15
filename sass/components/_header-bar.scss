@@ -1,5 +1,4 @@
 .header-bar {
-  @include clearfix();
   min-height: em(40px);
   // center content
   > * { 
@@ -38,6 +37,6 @@
     }
   }
   > div:not(:empty) {
-    padding: em(8px);
+    padding: em(8px 8px 8px 24px);
   }
 }
