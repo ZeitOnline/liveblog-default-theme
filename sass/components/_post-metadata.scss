@@ -2,6 +2,11 @@ $status_items: pinned highlighted;
 
 .lb-post-metadata {
 	@include font-smoothing;
+	margin-left: em(-16px);
+	margin-bottom: em(4px);
+	@include respond-min($break-tablet-min) {
+		margin-left: em(-39px);
+	}
 	&__status {
 		margin-right: em(8px);
 		display: inline-block;
@@ -18,7 +23,7 @@ $status_items: pinned highlighted;
 	&__time {
 		font-weight: bold;
 		background-color: $grey--mid;
-		padding: em(10px 8px 8px 12px);
+		padding: em(8px 6px 6px 10px);
 		border-radius: em(4px);
 		color: $grey--light;
 		margin-right: em(8px);
@@ -31,6 +36,8 @@ $status_items: pinned highlighted;
 .sticky {
 	.lb-post-metadata {
 		line-height: 1.5;
+		margin-left: 0;
+		padding-top: em(8px);
 		&__time {
 			font-weight: inherit;
 			background-color: inherit;

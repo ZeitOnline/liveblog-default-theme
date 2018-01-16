@@ -1,11 +1,11 @@
 $author-avatar-width: em(42px);
 
+// center content in posts
 .lb-items-container {
 	@include respond-min($break-tablet-min) {
 		@include center-content($zon-desktop-content-width);
 	};
 }
-
 
 .lb-item {
 	margin-bottom: em(24px);
@@ -30,7 +30,7 @@ $author-avatar-width: em(42px);
 	position: relative;
 	background-color: $grey--light;
 	margin-bottom: em(20px);
-	padding: em(16px 24px 8px);
+	padding: em(24px 24px 8px);
 	.text {
 		font-family: $font-franziska;
 		font-size: em(18px);
@@ -40,16 +40,21 @@ $author-avatar-width: em(42px);
 			font-size: em(20px);
 		}
 	}
-	&:not(:last-child):not(.sticky):not(.empty-message) {
+	&:not(:last-child):not(.empty-message) {
 		.lb-items-container{
 			&:before {
 				content: '';
 				position: absolute;
 				width: 2px;
-				height: calc(100% - 30px);
+				top: em(70px);
+				height: calc(100% - 32px);
 				background-color: #ccc;
-				margin-left: em(-32px);
+				margin-left: em(-10px);
 				z-index: 1;
+				@include respond-min($break-tablet-min) {
+					top: em(100px);
+					margin-left: em(-32px);
+				}
 			}
 		}
 	}
@@ -123,7 +128,13 @@ $author-avatar-width: em(42px);
 		}
 	}
 	.lb-post-header {
-		margin-bottom: 0;
+		margin-bottom: em(8px);
 		padding-left: em(16px);
+	}
+	// hide vertical line
+	.lb-items-container {
+		&:before {
+			display: none;
+		}
 	}
 }
