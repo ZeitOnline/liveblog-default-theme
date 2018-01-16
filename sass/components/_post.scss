@@ -21,7 +21,6 @@ $author-avatar-width: em(42px);
 		margin-bottom: em(16px);
 		@include respond-min($break-tablet-min) {
 			@include center-content($zon-desktop-content-width);
-			box-shadow: em(-32px) 0 #fff;
 		}
 	}
 }
