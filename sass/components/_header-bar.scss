@@ -1,42 +1,41 @@
 .header-bar {
-  min-height: em(40px);
-  // center content
-  > * { 
-    > * {
-      display: block;
-      @include respond-min($break-tablet-min){
-        @include center-content($zon-desktop-content-width);
-      }
-    }
-  }
-  &__blog-updated {
-    background-color: #ffe246;
-  }
-  &__interaction {
-    color: #dbdbdb;
-    background-color: $grey--mid;
-    span {
-      margin-right: em(12px);
-      padding-bottom: em(2px);
-      white-space: nowrap;
-      line-height: 2;
-      &[class$="--active"] {
-        color: #fff;
-        border-bottom: 2px solid #fff;
-      }
-      @include respond-min($break-tablet-min) {
-        margin-right: em(32px);
-      }
-      @include respond-min($break-desktop-min) {
-        @include hover() {
-          cursor: pointer;
-          color: #fff;
-          border-bottom: 2px solid #fff;
-        }
-      }
-    }
-  }
-  > div:not(:empty) {
-    padding: em(8px 8px 8px 24px);
-  }
+	min-height: em(40px); // center content
+	>* {
+		>* {
+			display: block;
+			@include respond-min($break-tablet-min) {
+				@include center-content($zon-desktop-content-width);
+			}
+		}
+	}
+	&__blog-updated {
+		background-color: #ffe246;
+	}
+	&__interaction {
+		color: #dbdbdb;
+		background-color: $grey--mid;
+		span {
+			margin-right: em(12px);
+			padding-bottom: em(2px);
+			white-space: nowrap;
+			line-height: 2;
+			&[class$="--active"] {
+				color: #fff;
+				border-bottom: 2px solid #fff;
+			}
+			@include respond-min($break-tablet-min) {
+				margin-right: em(32px);
+			}
+			@include respond-min($break-desktop-min) {
+				@include hover() {
+					cursor: pointer;
+					color: #fff;
+					border-bottom: 2px solid #fff;
+				}
+			}
+		}
+	}
+	>div:not(:empty) {
+		padding: em(8px 8px 8px 24px);
+	}
 }
