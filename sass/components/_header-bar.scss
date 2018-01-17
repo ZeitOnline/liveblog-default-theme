@@ -1,7 +1,8 @@
 .header-bar {
 	min-height: em(40px); // center content
-	>* {
-		>* {
+	> * {
+		// provide wrapper for aligning menu-items /w content
+		> * {
 			display: block;
 			@include respond-min($break-tablet-min) {
 				@include center-content($zon-desktop-content-width);
@@ -12,16 +13,27 @@
 		background-color: #ffe246;
 	}
 	&__interaction {
-		color: #dbdbdb;
+		@include font-smoothing();
+		position: relative;
+		color: #bfbfbf;
 		background-color: $grey--mid;
-		span {
-			margin-right: em(12px);
-			padding-bottom: em(2px);
-			white-space: nowrap;
-			line-height: 2;
+		white-space: nowrap;
+	}
+	// @TODO modularize template and bemify
+	&__align-wrapper {
+		// enables margin-left: auto for highlight-button
+		display: flex;
+		align-items: baseline;
+		> span {
+			&:not(:last-child) {
+				margin-right: em(24px);
+				@include respond-min($break-phablet-min) {
+					margin-right: em(32px);
+				}	
+			}
 			&[class$="--active"] {
 				color: #fff;
-				border-bottom: 2px solid #fff;
+				border-bottom: 1px solid #fff;
 			}
 			@include respond-min($break-tablet-min) {
 				margin-right: em(32px);
@@ -30,12 +42,41 @@
 				@include hover() {
 					cursor: pointer;
 					color: #fff;
-					border-bottom: 2px solid #fff;
+					border-bottom: 1px solid #fff;
 				}
 			}
 		}
 	}
-	>div:not(:empty) {
+	&__highlight {
+		@include respond-max($break-phablet-min) {
+			margin-left: auto;
+			display: inline-block;
+			width: em(22px);
+			//text-align: right;
+			&:before {
+				content: '';
+				margin-left: em(-16px);
+				position: absolute;
+				top: 0;
+				width: 1px;
+				height: 100%;
+				background-color: #bfbfbf;
+				z-index: 1;
+			}
+		}
+		@include respond-max($break-tablet-min * 0.99) {
+			&--active {
+				border-bottom: none !important; // overwrite border-bottom for mobile highlights button
+			}
+		}
+		> span {
+			display: none;
+			@include respond-min($break-phablet-min) {
+				display: initial;
+			}
+		}
+	}
+	> div:not(:empty) {
 		padding: em(8px 8px 8px 24px);
 	}
 }
