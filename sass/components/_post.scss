@@ -48,7 +48,7 @@ $author-avatar-width: em(42px);
 				top: em(70px);
 				height: calc(100% - 32px);
 				background-color: #acacac;
-				margin-left: em(-10px);
+				margin-left: em(-16px);
 				z-index: 1;
 				@include respond-min($break-tablet-min) {
 					top: em(100px);
