@@ -11,6 +11,9 @@ $author-avatar-width: em(42px);
 	margin-bottom: em(24px);
 	// @ TODO override embed's inlined link-color
 	@include default-article-textlink();
+	@include respond-min($break-tablet-min) {
+		margin-left: 16px; // align content on desktop, use px deliberately to avoid interference with font-size
+	}
 	a {
 		text-decoration: none;
 	}
@@ -52,7 +55,7 @@ $author-avatar-width: em(42px);
 				z-index: 1;
 				@include respond-min($break-tablet-min) {
 					top: em(100px);
-					margin-left: em(-32px);
+					margin-left: em(-12px);
 				}
 			}
 		}
@@ -116,6 +119,9 @@ $author-avatar-width: em(42px);
 }
 
 .sticky {
+	.lb-item {
+		margin-left: 0;
+	}
 	.lb-post {
 		margin-bottom: 0;
 		padding: em(8px);

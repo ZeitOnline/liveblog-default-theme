@@ -2,6 +2,9 @@ $share_items_list: facebook twitter email permalink;
 
 .lb-sharing {
 	display: flex;
+	@include respond-min($break-tablet-min) {
+		padding-left: 16px; // align content on desktop, use px deliberately to avoid interference with font-size
+	}
 	&__list {
 		padding: 0;
 		list-style: none;
@@ -35,5 +38,11 @@ $share_items_list: facebook twitter email permalink;
 	@include respond-min($break-tablet-min){
 		@include center-content($zon-desktop-content-width);
 		display: block;
+	}
+}
+
+.sticky {
+	.lb-sharing {
+		padding-left: 0;
 	}
 }
