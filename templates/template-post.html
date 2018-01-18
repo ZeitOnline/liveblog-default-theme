@@ -37,12 +37,14 @@
         <span class="lb-post-metadata__status lb-post-metadata__status--highlighted"></span>
       {% elif item.sticky %}
         <span class="lb-post-metadata__status lb-post-metadata__status--pinned"></span>
-      {% elif item.lb_highlight and settings.hasHighlights  %}
-        <span class="lb-post-metadata__status lb-post-metadata__status--highlighted"></span>
       {% elif item.post_items_type == "advertisement" %}
         <div class="lb-advertisement">{{ translate('Advertisement') }}</div>
       {% endif %}
       <span class="lb-post-metadata__time">
+        {% if item.lb_highlight and settings.hasHighlights %}
+          <span class="lb-post-metadata__status lb-post-metadata__status--highlighted
+          ">&#9733;</span>
+        {% endif %}
         <span class="relativeDate" data-js-timestamp="{{ postDate }}"  data-js-format="LT">{{- postDate -}}</span>
         <span>Uhr</span>
       </span>

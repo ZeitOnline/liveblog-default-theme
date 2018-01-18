@@ -74,6 +74,7 @@ $author-avatar-width: em(42px);
 	line-height: $author-avatar-width;
 	@include respond-min($break-tablet-min){
 		display: flex;
+		align-items: baseline;
 		@include center-content($zon-desktop-content-width);
 	}
 }
