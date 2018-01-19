@@ -10,6 +10,7 @@
 @import "components/sharing";
 @import "components/image";
 @import "components/embeds";
+@import "components/button-load-more-posts";
 
 .lb-wrapHtml {
 	font-family: $font-tabletgothic;
@@ -27,6 +28,7 @@
 	margin: 0;
 }
 
-.mod--displaynone {
+.mod--displaynone,
+.mod--hide {
 	display: none
 }
