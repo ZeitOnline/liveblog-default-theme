@@ -32,17 +32,13 @@
     <div class="lb-post-metadata">
       <!-- remove advertisement stylization-->
       {% if item.post_items_type != "advertisement" %}
-
-      {% if item.sticky and item.lb_highlight and settings.hasHighlights %}
-        <span class="lb-post-metadata__status lb-post-metadata__status--pinned"></span>
-        <span class="lb-post-metadata__status lb-post-metadata__status--highlighted"></span>
-      {% elif item.sticky %}
+      {% if item.sticky %}
         <span class="lb-post-metadata__status lb-post-metadata__status--pinned"></span>
       {% elif item.post_items_type == "advertisement" %}
         <div class="lb-advertisement">{{ translate('Advertisement') }}</div>
       {% endif %}
       <span class="lb-post-metadata__time">
-        {% if item.lb_highlight and settings.hasHighlights %}
+        {% if item.lb_highlight and settings.hasHighlights and not item.sticky %}
           <span class="lb-post-metadata__status lb-post-metadata__status--highlighted
           ">&#9733;</span>
         {% endif %}
