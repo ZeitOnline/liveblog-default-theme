@@ -1,13 +1,7 @@
 {
-<<<<<<< HEAD
     "label": "ZON default Prod",
     "name": "zon-default",
     "version": "3.3.36",
-=======
-    "label": "Liveblog 3 Default SEO Theme",
-    "name": "default",
-    "version": "3.3.33",
->>>>>>> master
     "asyncTheme": true,
     "seoTheme": true,
     "author": "ZEIT Online",
@@ -17,17 +11,10 @@
         "url" : "git@github.com:ZeitOnline/zon_liveblog_default_theme.git"
     },
     "license": "AGPL-3.0",
-<<<<<<< HEAD
     "devStyles": ["dist/zon-default-c65eb452d0.css"],
     "devScripts": ["dist/zon-default-49710fbb99.js"],
     "styles": ["dist/zon-default-c65eb452d0.css"],
     "scripts": ["dist/zon-default-49710fbb99.js"],
-=======
-    "devStyles": ["dist/default-5648d26af8.css"],
-    "devScripts": ["dist/default-4a599ede5a.js"],
-    "styles": ["dist/default-5648d26af8.css"],
-    "scripts": ["dist/default-4a599ede5a.js"],
->>>>>>> master
     "options": [
         {
             "name": "datetimeFormat",
