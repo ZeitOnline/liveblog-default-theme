@@ -1,25 +1,20 @@
 {
-    "label": "ZON default WIP",
+    "label": "ZON default Prod",
     "name": "zon-default",
-    "version": "3.3.35",
+    "version": "3.3.36",
     "asyncTheme": true,
     "seoTheme": true,
-    "author": "Sourcefabric <contact@sourcefabric.org>",
-    "contributors": [
-        "Paul Solbach <psolbach@dpa-newslab.com>",
-        "Massimo Scamarcia <massimo.scamarcia@sourcefabric.org>",
-        "Löic Nogues <loic.nogues@sourcefabric.org>",
-        "Aleksandar Backo Jelicic <aleksandar.jelicic@sourcefabric.org>"
-    ],
+    "author": "ZEIT Online",
+    "contributors": ["Tobias Weiß <tobias.weiss@zeit.de>"],
     "repository": {
         "type" : "git",
-        "url" : "git@github.com:liveblog/liveblog-default-theme"
+        "url" : "git@github.com:ZeitOnline/zon_liveblog_default_theme.git"
     },
     "license": "AGPL-3.0",
-    "devStyles": ["dist/zon-default-e752969e2f.css"],
-    "devScripts": ["dist/zon-default-7946cead63.js"],
-    "styles": ["dist/zon-default-e752969e2f.css"],
-    "scripts": ["dist/zon-default-7946cead63.js"],
+    "devStyles": ["dist/zon-default-c65eb452d0.css"],
+    "devScripts": ["dist/zon-default-49710fbb99.js"],
+    "styles": ["dist/zon-default-c65eb452d0.css"],
+    "scripts": ["dist/zon-default-49710fbb99.js"],
     "options": [
         {
             "name": "datetimeFormat",
@@ -128,7 +123,7 @@
             "name": "hasHighlights",
             "label": "Show highlight button",
             "type": "checkbox",
-            "default": false,
+            "default": true,
             "help": "Introduces a button for the readers to filter the timeline by highlights"
         },
         {
@@ -192,7 +187,7 @@
             "name": "removeStylesESI",
             "label": "Remove stylesheet from the Live Blog output for ESI",
             "type": "checkbox",
-            "default": false,
+            "default": true,
             "help": "Removes the link to the stylesheet from the Live Blog output to publish it using Edge Side Includes "
         },
         {

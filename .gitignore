@@ -8,7 +8,7 @@ node_modules
 Thumbs.db
 !*.pot
 index.html
-liveblog-default-theme.zip
+zon-liveblog-default-theme.zip
 py-test/env
 dist/
 /template.html
