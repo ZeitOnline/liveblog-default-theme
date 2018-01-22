@@ -28,7 +28,7 @@ const inputPath = theme.extends ?
   path.resolve(`${CWD}/node_modules/liveblog-${theme.extends}-theme/`) :
   path.resolve(`${CWD}/`);
 
-const options = require(path.resolve(inputPath,'./test/options.json'));
+const { options } = require(path.resolve(`${CWD}/test`));
 
 let argvKey = 0;
 let apiHost = "";
@@ -311,7 +311,7 @@ gulp.task('sass', ['clean-css'], () =>
 
 // Inject API response into template for dev/test purposes.
 gulp.task('index-inject', ['sass', 'browserify'], () => {
-  var testdata = require(path.resolve(inputPath,'./test'));
+  var testdata = require(path.resolve(`${CWD}/test`));
   var sources = gulp.src(['./dist/*.js', './dist/*.css'], {
     read: false // We're only after the file paths
   });
