@@ -42,12 +42,9 @@
           <span class="lb-post-metadata__status lb-post-metadata__status--highlighted
           ">&#9733;</span>
         {% endif %}
-        <span class="relativeDate" data-js-timestamp="{{ postDate }}"  data-js-format="LT">{{- postDate -}}</span>
-        <span>Uhr</span>
+        <span>{{ postDate | date('HH:mm') }} Uhr</span>
       </span>
-      <span class="lb-post-metadata__date relativeDate" data-js-timestamp="{{ postDate }}" data-js-format="LL">
-        {{- postDate -}}
-      </span>
+      <span class="lb-post-metadata__date">{{ postDate | date('D. MMMM YYYY') }}</span>
 
     </div>
     <!-- author plus avatar -->
