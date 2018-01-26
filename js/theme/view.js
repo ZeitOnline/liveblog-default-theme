@@ -4,10 +4,15 @@
 
 'use strict';
 
+require('./templates');
 const helpers = require('./helpers');
-const templates = require('./templates');
 const Slideshow = require('./slideshow');
 const Permalink = require('./permalink');
+const nunjucks = require("nunjucks/browser/nunjucks-slim");
+
+const nunjucksEnv = new nunjucks.Environment();
+nunjucksEnv.addFilter('date', helpers.convertTimestamp);
+nunjucks.env = nunjucksEnv;
 
 const permalink = new Permalink();
 const els = {
@@ -28,12 +33,14 @@ function renderTimeline(api_response) {
   var optionsObj = {i18n: window.LB.i18n};
 
   api_response._items.forEach((post) => {
-    renderedPosts.push(templates.post({
-      item: post,
-      options: optionsObj,
-      settings: window.LB.settings,
-      assets_root: window.LB.assets_root
-    }));
+    renderedPosts.push(
+      nunjucks.env.render('template-post.html', {
+        item: post,
+        options: optionsObj,
+        settings: window.LB.settings,
+        assets_root: window.LB.assets_root
+      })
+    );
 
   });
 
@@ -70,8 +77,8 @@ function renderPosts(api_response) {
                         !elem;
     // for translation macro purposes
     var optionsObj = {i18n: window.LB.i18n};
-
-    const rendered = templates.post({
+  
+    const rendered = nunjucks.env.render('template-post.html', {
       item: post,
       settings: window.LB.settings,
       options: optionsObj,
@@ -252,6 +259,8 @@ function updateTimestamps() {
     if (elem.textContent !== content) {
       elem.textContent = content;
     }
+    elem.classList.remove('mod--displaynone');
+    elem.textContent = helpers.convertTimestamp(timestamp);
   }
 }
 

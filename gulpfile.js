@@ -172,6 +172,8 @@ const nunjucksOptions = {
   env: nunjucksEnv
 };
 
+nunjucks.env = nunjucksEnv;
+
 const paths = {
   sass: 'sass/**/*.scss',
   js: ['js/*.js', 'js/*/*.js'],
@@ -214,14 +216,15 @@ gulp.task('browserify', browserifyPreviousTasks, (cb) => {
   });
 
   var rewriteFilenames = function(filename) {
-    var parts = filename.split("/");
+    var parts = filename.split('/');
+
     return parts[parts.length - 1];
-    //return filename;
+    // return filename;
   };
 
   // Source-mapped
   return b
-    .transform("babelify", {presets: ["es2015"]})
+    .transform('babelify', {presets: ['es2015']})
     .transform(nunjucksify, {
       extension: '.html',
       nameFunction: rewriteFilenames
@@ -321,7 +324,7 @@ gulp.task('index-inject', ['sass', 'browserify'], () => {
     testdata.options.blog._id = blogId;
   }
   const index = './templates/template-index.html';
-  var indexTask = gulp.src(fs.existsSync(index) ? index : path.resolve(inputPath,index))
+  var indexTask = gulp.src(fs.existsSync(index) ? index : path.resolve(inputPath, index))
     .pipe(plugins.inject(sources))
     .pipe(plugins.nunjucks.compile({
       options: testdata.options,
@@ -333,7 +336,6 @@ gulp.task('index-inject', ['sass', 'browserify'], () => {
     }, apiResponse.posts._items.length > 0 ? {} : nunjucksOptions));
 
   if (theme.ampTheme) {
-
     indexTask = indexTask.pipe(plugins.inject(
       sassCommon(false),
       {

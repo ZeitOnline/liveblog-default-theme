@@ -236,6 +236,13 @@
             "type": "checkbox",
             "default": false,
             "help": "If the users will see the syndicated author"
+        },
+        {
+            "name": "clientDatetimeOnly",
+            "label": "Show datetime only on client",
+            "type": "checkbox",
+            "default": false,
+            "help": "If the users will see the datetime only on client rendered"
         }
     ],
     "i18n": {
