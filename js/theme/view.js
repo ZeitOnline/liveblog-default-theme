@@ -252,15 +252,13 @@ function updateTimestamps() {
     var elem = dateElems[i]
       , format = elem.dataset.jsFormat
       , timestamp = elem.dataset.jsTimestamp
-      , content = (format)
+      , content = format
           ? helpers.formatTimestamp(timestamp, format)
           : helpers.convertTimestamp(timestamp);
 
     if (elem.textContent !== content) {
       elem.textContent = content;
     }
-    elem.classList.remove('mod--displaynone');
-    elem.textContent = helpers.convertTimestamp(timestamp);
   }
 }
 
