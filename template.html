@@ -33,7 +33,7 @@
   <div class="header-bar">
     <div class="header-bar__blog-updated"></div>
     <div class="header-bar__interaction">
-      <div> <!-- wrap centered content -->
+      <div class="header-bar__align-wrapper"> <!-- align menu items w/ post's content -->
         <span
           class="sorting-bar__order {%if settings.postOrder == 'newest_first' %}sorting-bar__order--active{% endif %}"
           data-js-orderby_descending>
@@ -45,7 +45,7 @@
           {{ translate("Oldest first") }}
         </span>
         {% if settings.hasHighlights %}
-          <span class="header-bar__highlight" data-js-show-highlighted>&#9733; Nur {{ translate('Highlights') }}</span>
+          <span class="header-bar__highlight" data-js-show-highlighted>&#9733;<span> Nur Highlights</span></span>
         {% endif %}
       </div>
     </div>
