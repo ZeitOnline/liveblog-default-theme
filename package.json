@@ -1,8 +1,8 @@
 {
-  "name": "liveblog-default-theme",
-  "version": "3.3.0",
-  "description": "Liveblog 3 SEO theme",
-  "author": "Paul Solbach <psolbach@dpa-newslab.com>, Massimo Scamarcia <massimo.scamarcia@sourcefabric.org>",
+  "name": "liveblog-zon-default-theme",
+  "version": "3.3.39",
+  "description": "ZEIT ONLINE Default Theme",
+  "author": "ZEIT ONLINE <kontakt@zeit.de>",
   "license": "AGPL-3.0",
   "main": "js/liveblog.js",
   "scripts": {
@@ -54,6 +54,6 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git@github.com:liveblog/liveblog-default-theme"
+    "url": "git@github.com:ZeitOnline/liveblog-default-theme"
   }
 }
