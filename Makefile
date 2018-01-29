@@ -1,4 +1,5 @@
-THEME_ARCHIVE = "zon-liveblog-default-theme.zip"
+THEME_NAME    := $(shell node -p "require('./package.json').name")
+THEME_ARCHIVE := $(THEME_NAME).zip
 
 make:
 	make clean
@@ -10,9 +11,14 @@ make:
 		-x "sass/*" \
 		-x "js/*" \
 		-x "node_modules/*" \
+		-x "py-test/*" \
 		-x "index.html" \
 		-x "gulpfile.js" \
 		-x "npm-shrinkwrap.json" \
+		-x "*.sublime-*" \
+		-x "*.zip" \
+		-x "package-lock.json" \
+		-x "yarn.lock" \
 		-x "embedcode.html"
 
 clean:
