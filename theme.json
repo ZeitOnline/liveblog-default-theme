@@ -154,7 +154,7 @@
             "name": "showGallery",
             "label": "Show slideshow gallery",
             "type": "checkbox",
-            "default": false,
+            "default": true,
             "help": "Multiple image posts will show up as an image gallery"
         },
         {
@@ -228,7 +228,7 @@
                     "label": "Română"
                 }
             ],
-            "default": "en"
+            "default": "de"
         },
         {
             "name": "showSyndicatedAuthor",
