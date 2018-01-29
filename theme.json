@@ -1,9 +1,11 @@
 {
-    "label": "ZEIT ONLINE Default Theme",
-    "name": "zon-default",
+    "label": "ZEIT ONLINE Default Theme - Solo",
+    "name": "zon-default-solo",
     "version": "3.3.39",
     "asyncTheme": true,
     "seoTheme": true,
+    "extends": "zon-default",
+    "onlyOwnCss": false,
     "author": "ZEIT ONLINE <kontakt@zeit.de>",
     "contributors": ["Tobias Weiß <tobias.weiss@zeit.de>"],
     "repository": {
@@ -11,238 +13,14 @@
         "url" : "git@github.com:ZeitOnline/liveblog-default-theme.git"
     },
     "license": "AGPL-3.0",
-    "devStyles": ["dist/zon-default-f2782746a3.css"],
-    "devScripts": ["dist/zon-default-8913c65c2f.js"],
-    "styles": ["dist/zon-default-f2782746a3.css"],
-    "scripts": ["dist/zon-default-8913c65c2f.js"],
+    "devStyles": ["dist/zon-default-solo-f2782746a3.css"],
+    "devScripts": ["dist/zon-default-solo-8913c65c2f.js"],
+    "styles": ["dist/zon-default-solo-f2782746a3.css"],
+    "scripts": ["dist/zon-default-solo-8913c65c2f.js"],
     "options": [
         {
-            "name": "datetimeFormat",
-            "label": "Date time Format",
-            "type": "datetimeformat",
-            "default": "lll",
-            "help": "Sets the date time format to be used in the embed. Please enter a custom format in valid moment.js format http://momentjs.com/docs/#/parsing/string-format"
-        },
-        {
-            "name": "showUpdateDatetime",
-            "label": "Show post update time",
-            "type": "checkbox",
-            "default": false,
-            "help": "If activated, users will see an additional timestamp, when the post has been updated"
-        },
-        {
-            "name": "postsPerPage",
-            "label": "Number of posts per page",
-            "type": "number",
-            "default": 10,
-            "help": "Set the number of posts you initially want to show to your readers"
-        },
-        {
-            "name": "postOrder",
-            "label": "Default posts order",
-            "type": "select",
-            "options": [
-                {"value": "editorial", "label": "Editorial"},
-                {"value": "newest_first", "label": "Newest first"},
-                {"value": "oldest_first", "label": "Oldest first"}
-            ],
-            "default": "newest_first"
-        },
-        {
-            "name": "autoApplyUpdates",
-            "label": "All updates are auto-applied periodically",
-            "type": "checkbox",
-            "default": true,
-            "help": "Turn off to prompt user to load updates"
-        },
-        {
-            "name": "canComment",
-            "label": "Users can comment",
-            "type": "checkbox",
-            "default": false,
-            "help": "Enables a commenting form for users"
-        },
-        {
-            "name": "showImage",
-            "label": "Show the blog image",
-            "type": "checkbox",
-            "default": false
-        },
-        {
-            "name": "showTitle",
-            "label": "Show the blog title",
-            "type": "checkbox",
-            "default": false
-        },
-        {
-            "name": "showDescription",
-            "label": "Show the blog description",
-            "type": "checkbox",
-            "default": false
-        },
-        {
-            "name": "showLiveblogLogo",
-            "label": "Show Liveblog logo",
-            "type": "checkbox",
-            "default": false,
-            "help": "Turn off to hide the “powered by Live Blog” logo"
-        },
-        {
             "name": "showAuthor",
-            "label": "Show the author",
-            "type": "checkbox",
-            "default": true,
-            "help": "Show the author information on posts"
-        },
-        {
-            "name": "authorNameFormat",
-            "label": "Author name format",
-            "type": "select",
-            "default": "display_name",
-            "dependsOn": {
-                "showAuthor": true
-            },
-            "options": [
-                {"value": "display_name", "label": "Full name"},
-                {"value": "byline", "label": "Byline"},
-                {"value": "sign_off", "label": "Sign off"}
-            ],
-            "help": "How to show the author info"
-        },
-        {
-            "name": "showAuthorAvatar",
-            "label": "Show author avatar",
-            "type": "checkbox",
-            "default": true,
-            "dependsOn": {
-                "showAuthor": true
-            },
-            "help": "Shows an author image besides the author name"
-        },
-        {
-            "name": "hasHighlights",
-            "label": "Show highlight button",
-            "type": "checkbox",
-            "default": true,
-            "help": "Introduces a button for the readers to filter the timeline by highlights"
-        },
-        {
-            "name": "permalinkDelimiter",
-            "label": "Permalink delimiter",
-            "type": "select",
-            "options": [
-                {
-                    "value": "?",
-                    "label": "Query delimiter (?)"
-                },
-                {
-                    "value": "#",
-                    "label": " Fragment identifier delimiter (#)"
-                }
-            ],
-            "default": "?",
-            "help": "Sets the delimiter used to send the permalink. ex: permalinkHashMark=?, http://example.com/?..."
-        },
-        {
-            "name": "blockSearchEngines",
-            "label": "Block search engines",
-            "type": "checkbox",
-            "default": true,
-            "help": "Will block search engines from indexing the blog content"
-        },
-        {
-            "name": "showGallery",
-            "label": "Show slideshow gallery",
-            "type": "checkbox",
-            "default": true,
-            "help": "Multiple image posts will show up as an image gallery"
-        },
-        {
-            "name": "stickyPosition",
-            "label": "Pinned post behaviour",
-            "type": "select",
-            "options": [
-                {"value": "bottom", "label": "Show below menu bar"},
-                {"value": "top", "label": "Show above menu bar"}
-            ],
-            "default": "bottom",
-            "help": "Please note: Pinned posts above the menu bar will not show the author info nor a timestamp. This setting is especially useful if you want to show a (streaming) video on top of your timeline."
-        },
-        {
-            "name": "gaCode",
-            "label": "Google analytics code",
-            "type": "text",
-            "placeholder": "UA-XXXXX-Y",
-            "default": "",
-            "help": "Please enter your google analytics account ID."
-        },
-        {
-            "name": "renderForESI",
-            "label": "Optimise the Live Blog output for ESI",
-            "type": "checkbox",
-            "default": false,
-            "help": "Strips the head and body tags from the Live Blog output to publish it using Edge Side Includes"
-        },
-        {
-            "name": "removeStylesESI",
-            "label": "Remove stylesheet from the Live Blog output for ESI",
-            "type": "checkbox",
-            "default": true,
-            "help": "Removes the link to the stylesheet from the Live Blog output to publish it using Edge Side Includes "
-        },
-        {
-            "name": "language",
-            "label": "Theme language",
-            "type": "select",
-            "options": [
-                {
-                    "value": "en",
-                    "label": "English"
-                },
-                {
-                    "value": "fi",
-                    "label": "Finnish"
-                },
-                {
-                    "value": "de",
-                    "label": "Deutsch"
-                },
-                {
-                    "value": "fr",
-                    "label": "Français"
-                },
-                {
-                    "value": "nl",
-                    "label": "Nederlands"
-                },
-                {
-                    "value": "no",
-                    "label": "Norsk"
-                },
-                {
-                    "value": "cs",
-                    "label": "Čeština"
-                },
-                {
-                    "value": "ro",
-                    "label": "Română"
-                }
-            ],
-            "default": "de"
-        },
-        {
-            "name": "showSyndicatedAuthor",
-            "label": "Show syndicated author",
-            "type": "checkbox",
-            "default": false,
-            "help": "If the users will see the syndicated author"
-        },
-        {
-            "name": "clientDatetimeOnly",
-            "label": "Show datetime only on client",
-            "type": "checkbox",
-            "default": false,
-            "help": "If the users will see the datetime only on client rendered"
+            "default": false
         }
     ],
     "i18n": {
