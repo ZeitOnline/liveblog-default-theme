@@ -144,10 +144,9 @@
 		text-rendering: optimizeLegibility;
 	}
 	@else {
-		@media only screen and (-webkit-min-device-pixel-ratio: 1.25), only screen and (min-device-pixel-ratio: 1.25), only screen and (min-resolution: 200dpi), only screen and (min-resolution: 1.25dppx) {
-			-webkit-font-smoothing: subpixel-antialiased;
-			-moz-osx-font-smoothing: auto;
-		}
+		-webkit-font-smoothing: inherit;
+		-moz-osx-font-smoothing: inherit;
+		text-rendering: auto;
 	}
 }
 

@@ -1,20 +1,37 @@
-.lb-item.quote {
+.lb-quote {
+    margin: auto;
+
     p {
         font-family: $font-franziska;
-        font-weight: normal;
         font-style: italic;
-        font-size: em(24px);
-        &:before,
+        font-size: em(22px);
+        margin: 0 0 1em;
+
+        &:before {
+          content: "\201E ";
+        }
+
         &:after {
-            content: '"';   
+          content: " \201C";
         }
     }
+
+    cite {
+        font-size: em(16px);
+        font-style: normal;
+        font-weight: bold;
+    }
+
+    .sticky & {
+        text-align: center;
+    }
+
     @include respond-min($break-tablet-min) {
+        max-width: 528px;
+        text-align: center;
+
         p {
-            font-size: em(36px);
-        }
-        h4 {
             font-size: em(24px);
         }
-    } 
+    }
 }

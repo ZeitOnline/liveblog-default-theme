@@ -1,65 +1,65 @@
 .lb-post-metadata {
-	@include font-smoothing;
-	margin-left: em(-22px);
-	margin-bottom: em(4px);
+	font-size: 13px;
+	letter-spacing: 0.03em;
+	margin-left: -31px;
+	text-transform: uppercase;
+
 	@include respond-min($break-tablet-min) {
-		margin-left: em(-39px);
+		margin-left: -42px;
 	}
+
+	@include respond-min($break-desktop-min) {
+		margin-left: -84px;
+	}
+
 	&__status {
 		&--pinned {
-			margin-right: em(8px);
-			display: inline-block;
-			width: em(24px);
-			height: em(24px);
-			background-image: url('../images/pinned.svg');
-			background-size: 40%;
-			background-position: 49%;
 			background-color: #444;
+			background-image: url('../images/pinned.svg');
+			background-position: 49%;
 			background-repeat: no-repeat;
+			background-size: 40%;
 			border-radius: 4px;
+			display: inline-block;
+			height: 24px;
+			margin-right: 8px;
+			vertical-align: middle;
+			width: 24px;
 		}
 		&--highlighted {
-			color: $color-highlight;	
+			color: $color-highlight;
+			margin-right: 4px;
 		}
 	}
 	&__time {
-		font-weight: bold;
+		@include font-smoothing;
 		background-color: $grey--mid;
-		padding: em(8px 6px 6px 10px);
-		border-radius: em(4px);
-		color: $grey--light;
-		margin-right: em(8px);
-	}
-	&__date {
-		text-transform: uppercase;
+		border-radius: 4px;
+		box-sizing: border-box;
+		color: #fff;
+		display: inline-block;
+		font-weight: bold;
+		margin-right: 10px;
+		min-width: 109px;
+		padding: 4px 10px 3px;
+		text-align: center;
 	}
 }
 
 .sticky {
 	.lb-post-metadata {
-		line-height: 1.5;
 		margin-left: 0;
-		padding-top: em(8px);
-		&__status {
-			position: relative;
-			top: em(5px);
-		}
+
 		&__time {
-			font-weight: inherit;
-			background-color: inherit;
-			padding: inherit;
-			border-radius: inherit;
+			@include font-smoothing(false);
+			background-color: transparent;
+			border-radius: 0;
+			border-right: 1px solid currentColor;
 			color: inherit;
-			margin-right: inherit;
-			&:after {
-				position: relative;
-				display: inline-block;
-				top: em(-2px);
-				margin: em(0 4px);
-				content: "|";
-				color: $charcoal;
-				font-weight: 600;
-			}
+			font-weight: normal;
+			margin: 0 8px 0 0;
+			min-width: 0;
+			padding: 0 8px 0 0;
 		}
 	}
 }

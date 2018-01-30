@@ -1,24 +1,30 @@
 $share_items_list: facebook twitter email permalink;
 
 .lb-sharing {
-	display: flex;
-	@include respond-min($break-tablet-min) {
-		padding-left: 16px; // align content on desktop, use px deliberately to avoid interference with font-size
-	}
+	@include center-content($zon-desktop-content-width);
+	margin-top: 40px;
+
 	&__list {
-		padding: 0;
+		display: flex;
+		justify-content: flex-end;
 		list-style: none;
-		margin-left: auto;
+		margin: 0;
+		padding: 0;
+
+		@include respond-min($break-tablet-min) {
+			justify-content: flex-start;
+		}
 	}
+
 	&__item {
 		width: em(24px);
 		height: em(24px);
-		display: inline-block;
+
 		@include hover {
 			opacity: 0.75;
 		};
 		&:not(:last-child) {
-			margin-right: em(18px);
+			margin-right: em(24px);
 		}
 		@each $share_icon in $share_items_list {
 			&--#{$share-icon} {
@@ -27,22 +33,10 @@ $share_items_list: facebook twitter email permalink;
 				background-repeat: no-repeat;
 			}
 		}
-		> * {
-			width: 100%;
-		}
 		a {
+			cursor: pointer;
 			display: inline-block;
 			height: 100%;
 		}
-	}
-	@include respond-min($break-tablet-min){
-		@include center-content($zon-desktop-content-width);
-		display: block;
-	}
-}
-
-.sticky {
-	.lb-sharing {
-		padding-left: 0;
 	}
 }

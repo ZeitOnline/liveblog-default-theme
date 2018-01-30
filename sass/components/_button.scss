@@ -1,0 +1,6 @@
+.lb-button {
+	@include zon-button-light();
+	display: table;
+	margin: 20px auto;
+	font-family: inherit;
+}
