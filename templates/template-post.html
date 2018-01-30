@@ -38,7 +38,7 @@
         <div class="lb-advertisement">{{ translate('Advertisement') }}</div>
       {% endif %}
       <span class="lb-post-metadata__time">
-        {% if item.lb_highlight and settings.hasHighlights and not item.sticky %}
+        {% if item.lb_highlight %}
           <span class="lb-post-metadata__status lb-post-metadata__status--highlighted
           ">&#9733;</span>
         {% endif %}
