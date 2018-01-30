@@ -5,9 +5,9 @@ var helpers = require('./helpers'),
     blogUpdatedTime: LB.blog._updated,
     init: function() {
       if (this.blogUpdatedTime) {
-        var convertedTime = helpers.convertTimestamp(this.blogUpdatedTime);
+        var convertedTime = helpers.formatTimestamp(this.blogUpdatedTime, 'ago');
 
-        this.blogUpdatedBox.innerHTML = '<span>Aktualisiert am ' + convertedTime + '</span>';
+        this.blogUpdatedBox.innerHTML = '<span>Aktualisiert ' + convertedTime + '</span>';
       }
     }
   };
