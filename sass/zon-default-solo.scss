@@ -14,16 +14,21 @@ article.lb-post {
 }
 
 .lb-post-metadata {
+	font-size: 14px !important;
 	margin-left: 0 !important;
+	text-transform: none !important;
 
-	span#{&}__time {
-		@include font-smoothing(false);
-		background-color: transparent;
-		border-radius: 0;
-		color: inherit;
-		font-weight: normal;
-		margin: 0 8px 0 0;
-		min-width: 0;
-		padding: 0 8px 0 0;
+	&__time {
+		display: none !important;
+	}
+}
+
+.lb-post--highlighted {
+	.lb-post-metadata__date {
+		&::before {
+			color: $color-highlight;
+			content: "\2605";
+			margin-right: 8px;
+		}
 	}
 }
