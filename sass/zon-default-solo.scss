@@ -1,4 +1,29 @@
+@import "base/utils";
+@import "base/functions";
+@import "base/constants";
+@import "base/mixins";
 
-.lb-wrapHtml {
-	color: red;
+article.lb-post {
+	padding-left: 20px;
+}
+
+.lb-items-container {
+	&:before {
+		content: none !important;
+	}
+}
+
+.lb-post-metadata {
+	margin-left: 0 !important;
+
+	span#{&}__time {
+		@include font-smoothing(false);
+		background-color: transparent;
+		border-radius: 0;
+		color: inherit;
+		font-weight: normal;
+		margin: 0 8px 0 0;
+		min-width: 0;
+		padding: 0 8px 0 0;
+	}
 }
