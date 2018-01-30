@@ -11,9 +11,9 @@
         "url" : "git@github.com:ZeitOnline/liveblog-default-theme.git"
     },
     "license": "AGPL-3.0",
-    "devStyles": ["dist/zon-default-16ed56486b.css"],
+    "devStyles": ["dist/zon-default-510bf6c991.css"],
     "devScripts": ["dist/zon-default-ffca35be29.js"],
-    "styles": ["dist/zon-default-16ed56486b.css"],
+    "styles": ["dist/zon-default-510bf6c991.css"],
     "scripts": ["dist/zon-default-ffca35be29.js"],
     "options": [
         {
