@@ -2,29 +2,15 @@ $author-avatar-width: em(42px);
 
 // center content in posts
 .lb-items-container {
-	@include respond-min($break-tablet-min) {
-		@include center-content($zon-desktop-content-width);
-	};
+	@include center-content($zon-desktop-content-width);
 }
 
 .lb-item {
 	margin-bottom: em(24px);
 	// @ TODO override embed's inlined link-color
 	@include default-article-textlink();
-	@include respond-min($break-tablet-min) {
-		margin-left: 16px; // align content on desktop, use px deliberately to avoid interference with font-size
-	}
 	a {
 		text-decoration: none;
-	}
-	&__sticky-wrapper {
-		background-color: #fff;
-		position: relative;
-		padding: em(16px 18px 8px);
-		margin-bottom: em(16px);
-		@include respond-min($break-tablet-min) {
-			@include center-content($zon-desktop-content-width);
-		}
 	}
 }
 
@@ -32,12 +18,17 @@ $author-avatar-width: em(42px);
 	position: relative;
 	background-color: $grey--light;
 	margin-bottom: em(20px);
-	padding: em(24px 24px 8px);
+	padding: em(24px 20px 20px 40px);
+
+	@include respond-min($break-tablet-min) {
+		padding: em(54px 20px 20px);
+	}
+
 	.text {
 		font-family: $font-franziska;
 		font-size: em(18px);
 		line-height: 1.4;
-		margin-bottom: em(20px);
+		margin-bottom: 20px;
 		@include respond-min($break-tablet-min) {
 			font-size: em(20px);
 		}
@@ -48,94 +39,114 @@ $author-avatar-width: em(42px);
 				content: '';
 				position: absolute;
 				width: 2px;
-				top: em(70px);
-				height: calc(100% - 32px);
+				top: 60px;
+				height: calc(100% - 26px);
 				background-color: #acacac;
-				margin-left: em(-16px);
+				margin-left: -21px;
 				z-index: 1;
 				@include respond-min($break-tablet-min) {
-					top: em(100px);
-					margin-left: em(-12px);
+					top: 100px;
+				}
+				@include respond-min($break-desktop-min) {
+					margin-left: -32px;
 				}
 			}
 		}
 	}
-	@include respond-min($break-tablet-min){
-		padding-top: em(54px);
-		padding-bottom: em(8px)
-	}
 }
 
 .lb-post-header {
+	@include center-content($zon-desktop-content-width);
 	color: #4f4f4f;
 	letter-spacing: $zon-letter-spacing-s;
 	margin-bottom: em(20px);
-	position: relative;
-	line-height: $author-avatar-width;
-	@include respond-min($break-tablet-min){
+
+	@include respond-min($break-tablet-min) {
+		align-items: center;
 		display: flex;
-		align-items: baseline;
-		@include center-content($zon-desktop-content-width);
 	}
 }
 
 .lb-author {
-	margin-left: auto;
+	margin-top: 12px;
+
 	&__name {
 		font-weight: bold;
 	}
+
 	&__avatar {
-		display: none;
-		border-radius: 50%;
-		overflow: hidden;
-		background: #B9B9B9;
 		background-size: cover;
+		background-color: #B9B9B9;
+		border-radius: 50%;
 		border: 1px solid #f4f4f4;
-		margin-left: 20px;
-		width: $author-avatar-width;
+		display: none;
 		height: $author-avatar-width;
+		margin-left: 12px;
+		overflow: hidden;
+		vertical-align: middle;
+		width: $author-avatar-width;
+	}
+
+	@include respond-min($break-tablet-min) {
+		margin-left: auto;
+		margin-top: 0;
+
+		&__avatar {
+			display: inline-block;
+		}
 	}
 }
 
-@include respond-min($break-phablet-min) {
-	.lb-post-header {
-		@include respond-min($break-tablet-min){
-			@include center-content($zon-desktop-content-width);
-		};
-	}
-	.lb-post-updated {
-		@include respond-min($break-tablet-min){
-			@include center-content($zon-desktop-content-width);
-		};
-	}
-	.lb-author {
-		&__name {
-			display: inline-block;
-		}
-		&__avatar {
-			display: inline-block;
-			vertical-align: middle;
-		}
+.lb-post-updated {
+	@include center-content($zon-desktop-content-width);
+}
+
+.lb-item__sticky-wrapper {
+	background-color: #fff;
+	margin: 10px auto 0;
+	max-width: em(740px);
+	padding: em(30px 14px);
+
+	@include respond-min($break-tablet-min) {
+		padding: em(36px 40px 30px);
 	}
 }
 
 .sticky {
-	.lb-item {
-		margin-left: 0;
-	}
 	.lb-post {
 		margin-bottom: 0;
-		padding: em(8px);
+		padding: em(20px 10px);
+
 		&:first-child {
-			padding-top: em(32px);
-		} 
+			padding-top: em(36px);
+		}
+
 		&:last-child {
 			margin-bottom: em(40px);
 		}
+
+		@include respond-min($break-tablet-min) {
+			padding-top: em(56px);
+			padding-bottom: 0;
+
+			&:first-child {
+				padding-top: em(56px);
+			}
+
+			&:last-child {
+				padding-bottom: em(56px);
+			}
+		}
 	}
 	.lb-post-header {
-		margin-bottom: em(8px);
-		padding-left: em(16px);
+		max-width: 660px + (2 * 14px);
+		margin: 0 auto;
+		padding: 0 14px;
+
+		@include respond-min($break-tablet-min) {
+			max-width: em(740px);
+			padding: 0;
+		}
 	}
 	// hide vertical line
 	.lb-items-container {

@@ -1,22 +1,30 @@
 .header-bar {
-	min-height: em(40px); // center content
+
 	> * {
 		// provide wrapper for aligning menu-items /w content
 		> * {
 			display: block;
-			@include respond-min($break-tablet-min) {
-				@include center-content($zon-desktop-content-width);
-			}
+			margin: auto;
+			max-width: 660px;
 		}
 	}
 	&__blog-updated {
 		background-color: #ffe246;
+		font-size: 13px;
+		margin-bottom: 1px;
+		min-height: 30px;
+		padding: 5px 14px;
+		@include respond-min($break-tablet-min) {
+			padding: 10px 20px;
+		}
 	}
 	&__interaction {
 		@include font-smoothing();
-		position: relative;
-		color: #bfbfbf;
 		background-color: $grey--mid;
+		color: #bfbfbf;
+		font-size: 14px;
+		margin-bottom: 1px;
+		padding: 0 14px;
 		white-space: nowrap;
 	}
 	// @TODO modularize template and bemify
@@ -25,58 +33,39 @@
 		display: flex;
 		align-items: baseline;
 		> span {
-			&:not(:last-child) {
-				margin-right: em(24px);
-				@include respond-min($break-phablet-min) {
-					margin-right: em(32px);
-				}	
+			padding: 14px 0;
+
+			@include hover() {
+				cursor: pointer;
+				color: #fff;
 			}
+
 			&[class$="--active"] {
 				color: #fff;
-				border-bottom: 1px solid #fff;
 			}
-			@include respond-min($break-tablet-min) {
-				margin-right: em(32px);
-			}
-			@include respond-min($break-desktop-min) {
-				@include hover() {
-					cursor: pointer;
-					color: #fff;
-					border-bottom: 1px solid #fff;
-				}
-			}
+		}
+	}
+	.sorting-bar__order {
+		margin-right: 24px;
+
+		&--active {
+			text-decoration: underline;
+		}
+
+		@include respond-min($break-tablet-min) {
+			margin-right: 32px;
 		}
 	}
 	&__highlight {
 		@include respond-max($break-phablet-min) {
-			margin-left: auto;
-			display: inline-block;
-			width: em(22px);
-			//text-align: right;
-			&:before {
-				content: '';
-				margin-left: em(-16px);
-				position: absolute;
-				top: 0;
-				width: 1px;
-				height: 100%;
-				background-color: #bfbfbf;
-				z-index: 1;
+			border-left: 1px solid #fff;
+			margin: 0 -14px 0 auto;
+			min-width: 48px;
+			text-align: center;
+
+			span {
+				display: none;
 			}
 		}
-		@include respond-max($break-tablet-min * 0.99) {
-			&--active {
-				border-bottom: none !important; // overwrite border-bottom for mobile highlights button
-			}
-		}
-		> span {
-			display: none;
-			@include respond-min($break-phablet-min) {
-				display: initial;
-			}
-		}
-	}
-	> div:not(:empty) {
-		padding: em(8px 8px 8px 24px);
 	}
 }
