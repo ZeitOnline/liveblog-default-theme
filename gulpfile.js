@@ -257,7 +257,7 @@ const sassCommon = (cleanCss) => {
   return gulp.src(sassFiles)
     .pipe(sourcemaps.init({loadMaps: DEBUG}))
     .pipe(plugins.sass({
-      paths: [path.resolve(inputPath, 'sass')],
+      paths: [path.resolve(CWD, './sass')],
       sourcemap: DEBUG,
       sourcemapPath: './sass'
     }))
