@@ -260,7 +260,6 @@ const sassCommon = (cleanCss) => {
       sourcemap: DEBUG,
       sourcemapPath: './sass'
     }))
-    .pipe(sourcemaps.write())
     .on('error', function(error) {
       console.error(error);
       this.emit('end');
@@ -296,7 +295,8 @@ const sassCommon = (cleanCss) => {
      * otherwise purifycss will remove those css "unused"/not present.
     */
     //.pipe(plugins.if(cleanCss, plugins.purifycss([BUILD_HTML])))
-    .pipe(plugins.if(cleanCss, plugins.cleanCss({compatibility: 'ie8'})));
+    .pipe(plugins.if(cleanCss, plugins.cleanCss({compatibility: 'ie8'})))
+    .pipe(sourcemaps.write());
 };
 
 // Compile SASS files.
