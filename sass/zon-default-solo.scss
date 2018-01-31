@@ -3,7 +3,7 @@
 @import "base/constants";
 @import "base/mixins";
 
-article.lb-post {
+.lb-post {
 	padding-left: 20px;
 }
 
@@ -14,12 +14,12 @@ article.lb-post {
 }
 
 .lb-post-metadata {
-	font-size: 14px !important;
-	margin-left: 0 !important;
-	text-transform: none !important;
+	font-size: 14px;
+	margin-left: 0;
+	text-transform: none;
 
 	&__time {
-		display: none !important;
+		display: none;
 	}
 }
 
