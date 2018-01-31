@@ -255,7 +255,7 @@ const sassCommon = (cleanCss) => {
   }
 
   return gulp.src(sassFiles)
-    .pipe(sourcemaps.init({loadMaps: DEBUG}))
+    .pipe(plugins.if(DEBUG, sourcemaps.init()))
     .pipe(plugins.sass({
       sourcemap: DEBUG,
       sourcemapPath: './sass'
@@ -296,7 +296,7 @@ const sassCommon = (cleanCss) => {
     */
     //.pipe(plugins.if(cleanCss, plugins.purifycss([BUILD_HTML])))
     .pipe(plugins.if(cleanCss, plugins.cleanCss({compatibility: 'ie8'})))
-    .pipe(sourcemaps.write());
+    .pipe(plugins.if(DEBUG, sourcemaps.write()));
 };
 
 // Compile SASS files.
