@@ -242,7 +242,7 @@ gulp.task('browserify', browserifyPreviousTasks, (cb) => {
     .pipe(gulp.dest('.'));
 });
 
-const sassCommon = (cleanCss) => {
+const sassCommon = () => {
   var sassFiles = [];
   // Name of the sass theme file.
   let themeSass = `./sass/${theme.name}.scss`;
@@ -294,7 +294,7 @@ const sassCommon = (cleanCss) => {
      * all posts above needs to be added and then enable purifycss.
      * otherwise purifycss will remove those css "unused"/not present.
     */
-    //.pipe(plugins.if(cleanCss, plugins.purifycss([BUILD_HTML])))
+    //.pipe(plugins.if(!DEBUG, plugins.purifycss([BUILD_HTML])))
     .pipe(plugins.if(!DEBUG, plugins.cleanCss({
       rebase: false,
       compatibility: 'ie8'
@@ -304,7 +304,7 @@ const sassCommon = (cleanCss) => {
 
 // Compile SASS files.
 gulp.task('sass', ['clean-css'], () =>
-    sassCommon(!DEBUG)
+    sassCommon()
     .pipe(plugins.concat(`${theme.name}.css`))
     .pipe(plugins.rev())
     .pipe(gulp.dest('./dist'))
@@ -338,7 +338,7 @@ gulp.task('index-inject', ['sass', 'browserify'], () => {
 
   if (theme.ampTheme) {
     indexTask = indexTask.pipe(plugins.inject(
-      sassCommon(false),
+      sassCommon(),
       {
         starttag: '<!-- inject:amp-styles -->',
         transform: function(filepath, file) {
