@@ -12,6 +12,7 @@ make:
 		-x "js/*" \
 		-x "node_modules/*" \
 		-x "py-test/*" \
+		-x "test/*" \
 		-x "index.html" \
 		-x "gulpfile.js" \
 		-x "npm-shrinkwrap.json" \
