@@ -244,15 +244,18 @@ gulp.task('browserify', browserifyPreviousTasks, (cb) => {
 
 const sassCommon = () => {
   var sassFiles = [];
-  // Name of the sass theme file.
-  let themeSass = `./sass/${theme.name}.scss`;
-  // Compile all the files under the sass folder if no theme sass file pressent.
-  sassFiles.push(fs.existsSync(themeSass) ? themeSass : './sass/*.scss');
 
+  // process inherited styles from extended theme first
+  // this makes it easier to override rules with this theme's CSS and avoids specificity war
   if ( !theme.onlyOwnCss && theme.extends ) {
     let themeSass = path.resolve(`${inputPath}/sass/${theme.extends}.scss`);
     sassFiles.push(fs.existsSync(themeSass) ? themeSass : path.resolve(`${inputPath}/sass/*.scss`));
   }
+
+  // Name of the sass theme file.
+  let themeSass = `./sass/${theme.name}.scss`;
+  // Compile all the files under the sass folder if no theme sass file pressent.
+  sassFiles.push(fs.existsSync(themeSass) ? themeSass : './sass/*.scss');
 
   return gulp.src(sassFiles)
     .pipe(plugins.if(DEBUG, sourcemaps.init()))
