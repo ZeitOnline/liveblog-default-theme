@@ -11,10 +11,10 @@
         "url" : "git@github.com:ZeitOnline/liveblog-default-theme.git"
     },
     "license": "AGPL-3.0",
-    "devStyles": ["dist/zon-default-510bf6c991.css"],
-    "devScripts": ["dist/zon-default-ffca35be29.js"],
-    "styles": ["dist/zon-default-510bf6c991.css"],
-    "scripts": ["dist/zon-default-ffca35be29.js"],
+    "devStyles": ["dist/zon-default-e43a7fd276.css"],
+    "devScripts": ["dist/zon-default-662fa9c0e0.js"],
+    "styles": ["dist/zon-default-e43a7fd276.css"],
+    "scripts": ["dist/zon-default-662fa9c0e0.js"],
     "options": [
         {
             "name": "datetimeFormat",
