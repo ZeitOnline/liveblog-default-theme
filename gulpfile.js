@@ -15,7 +15,7 @@ const amphtmlValidator = require('amphtml-validator');
 const sourcemaps = require('gulp-sourcemaps');
 
 const CWD = process.cwd();
-var DEBUG = plugins.util.env.NODE_ENV ? plugins.util.env.NODE_ENV : process.env.NODE_ENV !== "production";
+var DEBUG = process.env.NODE_ENV !== "production";
 
 // Command-line and default theme options from theme.json.
 let theme = {};
