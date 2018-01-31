@@ -265,7 +265,6 @@ const sassCommon = (cleanCss) => {
       console.error(error);
       this.emit('end');
     })
-    .pipe(plugins.if(!DEBUG, plugins.minifyCss({compatibility: 'ie8'})))
     .pipe(plugins.autoprefixer({
       flexbox: 'no-2009'
     }))
