@@ -9,8 +9,14 @@ $author-avatar-width: em(42px);
 	margin-bottom: em(24px);
 	// @ TODO override embed's inlined link-color
 	@include default-article-textlink();
+
 	a {
 		text-decoration: none;
+	}
+
+	.item--embed__illustration,
+	.item--embed__only-illustration {
+		border-bottom: 0;
 	}
 }
 
