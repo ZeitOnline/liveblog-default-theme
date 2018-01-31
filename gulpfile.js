@@ -295,7 +295,10 @@ const sassCommon = (cleanCss) => {
      * otherwise purifycss will remove those css "unused"/not present.
     */
     //.pipe(plugins.if(cleanCss, plugins.purifycss([BUILD_HTML])))
-    .pipe(plugins.if(cleanCss, plugins.cleanCss({compatibility: 'ie8'})))
+    .pipe(plugins.if(!DEBUG, plugins.cleanCss({
+      rebase: false,
+      compatibility: 'ie8'
+    })))
     .pipe(plugins.if(DEBUG, sourcemaps.write()));
 };
 
