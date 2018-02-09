@@ -1,7 +1,7 @@
 {
     "label": "ZEIT ONLINE Default Theme",
     "name": "zon-default",
-    "version": "3.3.41",
+    "version": "3.3.42",
     "asyncTheme": true,
     "seoTheme": true,
     "author": "ZEIT ONLINE <kontakt@zeit.de>",
@@ -11,9 +11,9 @@
         "url" : "git@github.com:ZeitOnline/liveblog-default-theme.git"
     },
     "license": "AGPL-3.0",
-    "devStyles": ["dist/zon-default-30a6501640.css"],
+    "devStyles": ["dist/zon-default-e4e5f48447.css"],
     "devScripts": ["dist/zon-default-8dbf67a785.js"],
-    "styles": ["dist/zon-default-30a6501640.css"],
+    "styles": ["dist/zon-default-e4e5f48447.css"],
     "scripts": ["dist/zon-default-8dbf67a785.js"],
     "options": [
         {
