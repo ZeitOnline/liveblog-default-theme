@@ -38,5 +38,8 @@ $share_items_list: facebook twitter email permalink;
 			display: inline-block;
 			height: 100%;
 		}
+		> * {
+			width: 100%;
+		}
 	}
 }
