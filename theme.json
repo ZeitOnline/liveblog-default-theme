@@ -1,7 +1,7 @@
 {
     "label": "ZEIT ONLINE Default Theme",
     "name": "zon-default",
-    "version": "3.3.42",
+    "version": "3.3.43",
     "asyncTheme": true,
     "seoTheme": true,
     "author": "ZEIT ONLINE <kontakt@zeit.de>",
@@ -180,14 +180,14 @@
             "name": "renderForESI",
             "label": "Optimise the Live Blog output for ESI",
             "type": "checkbox",
-            "default": false,
+            "default": true,
             "help": "Strips the head and body tags from the Live Blog output to publish it using Edge Side Includes"
         },
         {
             "name": "removeStylesESI",
             "label": "Remove stylesheet from the Live Blog output for ESI",
             "type": "checkbox",
-            "default": true,
+            "default": false,
             "help": "Removes the link to the stylesheet from the Live Blog output to publish it using Edge Side Includes "
         },
         {
