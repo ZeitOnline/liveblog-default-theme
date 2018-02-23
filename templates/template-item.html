@@ -21,7 +21,8 @@
           <div class="lb-item {% if ref.item.meta.media.renditions.original.height > ref.item.meta.media.renditions.original.width %}portrait{% endif %}{{ref.item.item_type}}">
         {% else %}
           <!-- item start -->
-          <div class="lb-item {{ref.item.item_type}}">
+          {% set item_type = 'sf-liveblog-quote' if ref.item.item_type == 'quote' else ref.item.item_type %}
+          <div class="lb-item {{item_type}}">
         {% endif %}
         {% if ref.item.item_type == "embed" %}
           {% include "template-item-embed.html" %}
