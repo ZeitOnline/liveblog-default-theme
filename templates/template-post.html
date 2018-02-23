@@ -3,6 +3,7 @@
 {% set postDate = item.published_date %}
 {% set type = item.post_items_type %}
 {% set galleryItem = false %}
+{% set type = 'sf-liveblog-quote' if type == 'quote' else type %}
 
 {% if mainItem.commenter %}
   {% if item.groups[1].refs|length > 1 %}
