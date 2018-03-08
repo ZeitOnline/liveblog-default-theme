@@ -68,6 +68,7 @@ $author-avatar-width: em(42px);
 	margin-bottom: em(20px);
 
 	@include respond-min($break-tablet-min) {
+		min-height: $author-avatar-width; // ensure min-height w/o author avatar
 		align-items: center;
 		display: flex;
 	}
