@@ -1,5 +1,4 @@
 .header-bar {
-
 	> * {
 		// provide wrapper for aligning menu-items /w content
 		> * {
@@ -8,14 +7,10 @@
 			max-width: 660px;
 		}
 	}
-	&__blog-updated {
-		background-color: #ffe246;
-		font-size: 13px;
-		margin-bottom: 1px;
-		min-height: 30px;
-		padding: 5px 14px;
-		@include respond-min($break-tablet-min) {
-			padding: 10px 20px;
+	&__divider {
+		&--yellow {
+			background-color: #ffe246;
+			height: 10px;
 		}
 	}
 	&__interaction {

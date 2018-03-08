@@ -9,10 +9,9 @@ const handlers = require('./handlers'),
   view = require('./view'),
   pageview = require('./pageview'),
   settings = window.LB.settings,
-  localAnalytics = require('./local-analytics'),
-  blogUpdated = require('./blog-updated');
+  localAnalytics = require('./local-analytics');
 
-require("iframe-resizer/js/iframeResizer.contentWindow.min.js");
+require('iframe-resizer/js/iframeResizer.contentWindow.min.js');
 module.exports = {
   /**
    * On document loaded, do the following:
@@ -23,7 +22,6 @@ module.exports = {
     viewmodel.init();
     localAnalytics.hit();
     pageview.init();
-    blogUpdated.init();
 
     view.updateTimestamps();
     if (!settings.datetimeFormat || settings.datetimeFormat === 'ago') {
