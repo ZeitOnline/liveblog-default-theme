@@ -6,7 +6,7 @@
   "license": "AGPL-3.0",
   "main": "js/liveblog.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "gulp"
   },
   "dependencies": {
     "babel-preset-env": "^1.6.1",
