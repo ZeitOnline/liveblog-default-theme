@@ -1,6 +1,6 @@
 {
   "name": "liveblog-zon-default-solo-theme",
-  "version": "3.3.40",
+  "version": "3.3.53",
   "description": "ZEIT ONLINE Default Theme - Solo",
   "author": "ZEIT ONLINE <kontakt@zeit.de>",
   "license": "AGPL-3.0",
@@ -9,8 +9,6 @@
     "build": "gulp"
   },
   "dependencies": {
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-stage-0": "^6.24.1",
     "liveblog-zon-default-theme": "git+https://github.com/ZeitOnline/liveblog-default-theme.git"
   },
   "browserslist": [

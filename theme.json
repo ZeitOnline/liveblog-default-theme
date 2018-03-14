@@ -1,7 +1,7 @@
 {
     "label": "ZEIT ONLINE Default Theme - Solo",
     "name": "zon-default-solo",
-    "version": "3.3.40",
+    "version": "3.3.53",
     "asyncTheme": true,
     "seoTheme": true,
     "extends": "zon-default",
@@ -13,10 +13,10 @@
         "url" : "git@github.com:ZeitOnline/liveblog-default-theme.git"
     },
     "license": "AGPL-3.0",
-    "devStyles": ["dist/zon-default-solo-e514994fb7.css"],
-    "devScripts": ["dist/zon-default-solo-3c910be692.js"],
-    "styles": ["dist/zon-default-solo-e514994fb7.css"],
-    "scripts": ["dist/zon-default-solo-3c910be692.js"],
+    "devStyles": ["dist/zon-default-solo-2a86d74e22.css"],
+    "devScripts": ["dist/zon-default-solo-7897c556b6.js"],
+    "styles": ["dist/zon-default-solo-2a86d74e22.css"],
+    "scripts": ["dist/zon-default-solo-7897c556b6.js"],
     "options": [
         {
             "name": "datetimeFormat",
