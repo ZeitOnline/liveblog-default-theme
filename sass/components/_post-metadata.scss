@@ -1,8 +1,10 @@
 .lb-post-metadata {
-	font-size: 13px;
+	position: relative;
+	font-size: rem(13px);
 	letter-spacing: 0.03em;
 	margin-left: -31px;
 	text-transform: uppercase;
+	z-index: 2;
 
 	@include respond-min($break-tablet-min) {
 		margin-left: -42px;
@@ -43,6 +45,7 @@
 		min-width: 109px;
 		padding: 4px 10px 3px;
 		text-align: center;
+		box-shadow: 0 0 0 10px $grey--light;
 
 		&::after {
 			content: ' Uhr';
