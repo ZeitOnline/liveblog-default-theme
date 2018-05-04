@@ -33,19 +33,17 @@
     <div class="header-bar__divider--yellow"></div>
     <div class="header-bar__interaction">
       <div class="header-bar__align-wrapper"> <!-- align menu items w/ post's content -->
-        <span
-          class="sorting-bar__order {%if settings.postOrder == 'newest_first' %}sorting-bar__order--active{% endif %}"
-          data-js-orderby_descending>
+        <span class="sorting-bar__order
+          {%- if settings.postOrder == 'newest_first' %} sorting-bar__order--active{% endif %}" data-js-orderby_descending>
           {{  translate("Newest first") }}
         </span>
-        <span  
-          class="sorting-bar__order {%if settings.postOrder == 'oldest_first'%}sorting-bar__order--active{% endif %}"
-          data-js-orderby_ascending>
+        <span class="sorting-bar__order
+          {%- if settings.postOrder == 'oldest_first'%} sorting-bar__order--active{% endif %}" data-js-orderby_ascending>
           {{ translate("Oldest first") }}
         </span>
-        {% if settings.hasHighlights %}
-          <span class="header-bar__highlight" data-js-show-highlighted>&#9733;<span> Nur Highlights</span></span>
-        {% endif %}
+        {% if settings.hasHighlights -%}
+          <span class="header-bar__highlight" data-js-show-highlighted>&#9733; <span>Das Wichtigste</span></span>
+        {% endif -%}
       </div>
     </div>
       {% if settings.canComment %}
